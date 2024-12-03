@@ -219,7 +219,7 @@ loader.load(
           };
 
           // Set the logo image source (adjust the path as needed)
-          logoImage.src = "/logo2.png";
+          logoImage.src = "logo2.png";
         } else if (child.material) {
           // Ensure other faces remain purple
           child.material.color.setHex(0x800080);
