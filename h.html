@@ -3,61 +3,230 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Image with Gradient Overlay</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
 
+    <title>Customer Testimonials</title>
+    <style>
+      /* General Styles */
       body {
+        margin: 0;
         font-family: Arial, sans-serif;
+        background: #1c1c1e;
+        color: #fff;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-color: #f0f0f0;
       }
 
-      .image-container {
+      .testimonials {
+        text-align: center;
+        max-width: 800px;
+        width: 90%;
+      }
+
+      .rating {
+        margin: 20px 0;
+      }
+
+      .rating .stars {
+        font-size: 1.5em;
+        color: gold;
+      }
+
+      .rating span {
+        font-size: 0.9em;
+        color: #ccc;
+      }
+
+      /* Carousel Styles */
+      .carousel {
         position: relative;
-        max-width: 1200px;
-        width: 100%;
-
-        height: auto;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
       }
 
-      .image-container img {
-        width: 100%;
-        height: auto;
-        border-radius: 50px;
-        display: block;
+      .slides {
+        display: flex;
+        gap: 10px;
+        transform: translateX(0);
+        transition: transform 0.5s ease-in-out;
       }
 
-      .image-container::after {
-        content: "";
+      .slide {
+        flex: 0 0 25%;
+        opacity: 0.5;
+        transform: scale(0.9);
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        background: #2a2a2e;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        text-align: left;
+      }
+
+      .slide.active {
+        flex: 0 0 35%;
+        transform: scale(1);
+        opacity: 1;
+        background: #000;
+      }
+
+      .slide h3 {
+        margin: 0;
+        font-size: 1.2em;
+      }
+
+      .slide p {
+        font-size: 0.9em;
+        margin: 10px 0;
+      }
+
+      .contact-btn {
+        margin-top: 10px;
+        padding: 10px 15px;
+        background: #0078ff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .contact-btn:hover {
+        background: #005fcc;
+      }
+
+      .date {
+        font-size: 0.8em;
+        color: #aaa;
+      }
+
+      /* Navigation Buttons */
+      .nav {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 50px;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%);
-        pointer-events: none;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #0078ff;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 10px;
+        font-size: 1.2em;
+        z-index: 10;
       }
 
-      @media (max-width: 991px) {
-        .image-container {
-          width: 90%;
-          margin: auto;
+      .nav.left {
+        left: 10px;
+      }
+
+      .nav.right {
+        right: 10px;
+      }
+
+      .nav:hover {
+        background: #005fcc;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .slide {
+          flex: 0 0 50%;
+        }
+
+        .slide.active {
+          flex: 0 0 60%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .slide {
+          flex: 0 0 80%;
+        }
+
+        .slide.active {
+          flex: 0 0 90%;
         }
       }
     </style>
   </head>
   <body>
-    <div class="image-container">
-      <img src="tax2.jpg" alt="Office Workspace" />
-    </div>
+    <section class="testimonials">
+      <h1>Customer testimonials</h1>
+      <div class="rating">
+        <div class="stars">★★★★★</div>
+        <p>Excellent</p>
+        <span>Based on 125 reviews<br />Google Maps</span>
+      </div>
+      <div class="carousel">
+        <button class="nav left">&lt;</button>
+        <div class="slides">
+          <div class="slide active">
+            <h3>Dave Hughes</h3>
+            <p>
+              "Jeremy was superb. He explained exactly what his services offered
+              and listened to any questions I had. Set my worries at ease. I
+              look forward to the future under Genio's."
+            </p>
+            <button class="contact-btn">Contact Us</button>
+          </div>
+          <div class="slide">
+            <h3>Mark Crowley</h3>
+            <p>
+              "Jeremy has been doing my partner's accounts for over 5 years now,
+              and we are very happy with the top level of service he provides."
+            </p>
+            <p class="date">15/02/2024</p>
+          </div>
+          <div class="slide">
+            <h3>Leanne</h3>
+            <p>
+              "Jeremy and his staff are very professional; easy communication,
+              always available and willing to go the extra mile to help. Running
+              a business is not easy, but Jeremy makes it as smooth as
+              possible."
+            </p>
+            <p class="date">25/03/2024</p>
+          </div>
+        </div>
+        <button class="nav right">&gt;</button>
+      </div>
+    </section>
+    <script>
+      const slides = document.querySelectorAll(".slide");
+      const leftNav = document.querySelector(".nav.left");
+      const rightNav = document.querySelector(".nav.right");
+
+      let currentIndex = 0;
+
+      function updateCarousel() {
+        slides.forEach((slide, index) => {
+          slide.classList.remove("active");
+          if (index === currentIndex) {
+            slide.classList.add("active");
+          }
+        });
+
+        const offset = -currentIndex * (100 / slides.length);
+        document.querySelector(
+          ".slides"
+        ).style.transform = `translateX(${offset}%)`;
+      }
+
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+      }
+
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+      }
+
+      rightNav.addEventListener("click", nextSlide);
+      leftNav.addEventListener("click", prevSlide);
+
+      setInterval(nextSlide, 3000); // Autoplay every 3 seconds
+    </script>
   </body>
 </html>
