@@ -36,45 +36,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       #cube-container {
-        position: absolute;
-        top: 50%; /* Center the cube in the container */
-        left: 50%;
-        transform: translate(-50%, -50%); /* Exact center */
+        position: relative;
         width: 100%;
-        height: 100%;
-        overflow: hidden !important;
+        height: 0;
+        padding-bottom: 150%; /* Maintains aspect ratio */
+        overflow: hidden;
       }
-      canvas {
-        width: 670px !important;
-        overflow: hidden !important;
+
+      #cube-container canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain;
       }
-      @media all and (max-width: 991px) {
+      @media all and (min-width: 2000px) {
         #cube-container {
-          position: relative !important;
-          top: auto !important;
-          left: auto !important;
-          transform: none !important;
+          width: 200% !important;
         }
-
-        canvas {
-          height: 882px !important;
-          width: 496px !important;
-          aspect-ratio: auto 496 / 882 !important;
+      }
+      @media all and (min-width: 1200px) {
+        #cube-container {
+          width: 150%;
         }
       }
 
-      @media all and (max-width: 500px) {
+      @media all and (min-width: 992px) {
         #cube-container {
-          position: relative !important;
-          top: auto !important;
-          left: auto !important;
-          transform: none !important;
-        }
-
-        canvas {
-          width: 263px !important;
-          height: 400px !important;
-          aspect-ratio: auto 263 / 400 !important;
+          padding-bottom: 100%; /* More square aspect ratio on larger screens */
         }
       }
     </style>
