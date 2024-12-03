@@ -178,7 +178,7 @@ loader.load(
           };
 
           // Set the logo image source (adjust the path as needed)
-          logoImage.src = "/logo.png";
+          logoImage.src = "logo.png";
         } else if (child.name === "Object_6") {
           // Create a new canvas specifically for the logo
           const logoCanvas = document.createElement("canvas");
