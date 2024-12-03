@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Applight Template By W3 Template</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"
+    />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Font Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #cube-container {
+        position: absolute;
+        top: 50%; /* Center the cube in the container */
+        left: 50%;
+        transform: translate(-50%, -50%); /* Exact center */
+        width: 100%;
+        height: 100%;
+        overflow: hidden !important;
+      }
+      canvas {
+        width: 670px !important;
+        overflow: hidden !important;
+      }
+      @media all and (max-width: 991px) {
+        #cube-container {
+          position: relative !important;
+          top: auto !important;
+          left: auto !important;
+          transform: none !important;
+        }
+
+        canvas {
+          height: 882px !important;
+          width: 496px !important;
+          aspect-ratio: auto 496 / 882 !important;
+        }
+      }
+
+      @media all and (max-width: 500px) {
+        #cube-container {
+          position: relative !important;
+          top: auto !important;
+          left: auto !important;
+          transform: none !important;
+        }
+
+        canvas {
+          width: 263px !important;
+          height: 400px !important;
+          aspect-ratio: auto 263 / 400;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <!-- Logo on the left side (above nav-items) -->
+        <a href="#" class="navbar-brand">
+          <img src="Genio White Out 2.png" alt="Logo" class="logo" />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="fas fa-bars" style="color: #fff"></span>
+        </button>
+
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="" data-scroll-nav="0">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-scroll-nav="1">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-scroll-nav="2">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-scroll-nav="3"
+                >Online Accounting</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-scroll-nav="4">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="resources.html">Resources</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-scroll-nav="6">Contact</a>
+            </li>
+          </ul>
+          <!-- Search Bar -->
+          <form class="d-flex search-form">
+            <div class="input-group">
+              <span class="input-group-text">
+                <i class="fas fa-search"></i>
+              </span>
+              <input
+                class="form-control"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- End Navbar -->
+    <!-------Banner Start------->
+    <section class="banner" data-scroll-index="0">
+      <div class="banner-overlay">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+              <div class="banner-text">
+                <h2
+                  style="
+                    font-size: 40px;
+                    background: linear-gradient(
+                      180deg,
+                      #ffffff 37%,
+                      #f49ecc 100%
+                    );
+                    -webkit-background-clip: text;
+                    color: transparent;
+                  "
+                >
+                  Mastering Finance: Solving Complexities, Piece by Piece
+                </h2>
+
+                <button
+                  class="btn-grid"
+                  type="submit"
+                  style="
+                    background: linear-gradient(
+                      180deg,
+                      #ffffff 0%,
+                      #dedbff 100%
+                    );
+                    border-radius: 25px;
+                    padding: 5px 12px;
+                    margin-top: 20px;
+                  "
+                >
+                  <span class="front" style="color: #3c3c3c">Enquire</span>
+                </button>
+
+                <p class="banner-text white">
+                  We are a small and friendly firm of Southampton Accountants
+                  based in Woolston, Southampton who specialise in helping small
+                  businesses develop and manage their accounts and tax.
+                  <br /><br />
+                  Join us for a coffee and learn how we can help you.
+                  <br /><br />
+                  Call Us Now on 02382 123 336
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+              <div id="cube-container"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-------Banner End------->
+    <div class="welcome" style="margin-top: 50px">
+      <h1
+        style="
+          background: linear-gradient(180deg, #ffffff 37%, #f49ecc 100%);
+          -webkit-background-clip: text;
+          color: transparent;
+          text-align: center;
+        "
+      >
+        Welcome to Genio Accountants
+      </h1>
+      <img src="/welcome.png" alt="" style="width: 100%; overflow: hidden" />
+    </div>
+    <section class="services-section" style="padding: 40px">
+      <div
+        class="services-container"
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          gap: 20px;
+          max-width: 1700px;
+          margin: 0 auto;
+        "
+      >
+        <!-- Service 1 -->
+        <div
+          class="service-item"
+          style="
+            flex: 1 1 calc(25% - 20px);
+            min-width: 250px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <img
+            src="service.png"
+            alt="Service 1 Icon"
+            style="width: 120px; height: 120px; margin-bottom: 15px"
+          />
+          <h3
+            style="
+              font-size: 25px;
+              background: linear-gradient(180deg, #ffffff 0%, #f49ecc 80%);
+              -webkit-background-clip: text;
+              color: transparent;
+              margin-bottom: 10px;
+            "
+          >
+            Services
+          </h3>
+          <p style="font-size: 14px; color: #fff">
+            Whatever type of business you run, and however you need to manage
+            your accounts we can help.
+          </p>
+        </div>
+        <!-- Service 2 -->
+        <div
+          class="service-item"
+          style="
+            flex: 1 1 calc(25% - 20px);
+            min-width: 250px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <img
+            src="service.png"
+            alt="Service 2 Icon"
+            style="width: 120px; height: 120px; margin-bottom: 15px"
+          />
+          <h3
+            style="
+              font-size: 25px;
+              background: linear-gradient(180deg, #ffffff 0%, #f49ecc 80%);
+              -webkit-background-clip: text;
+              color: transparent;
+              margin-bottom: 10px;
+            "
+          >
+            Online Accounting
+          </h3>
+          <p style="font-size: 14px; color: #fff">
+            Let us guide you through the maze of online accounting.We’ll advise
+            on the best software for your business.
+          </p>
+        </div>
+        <!-- Service 3 -->
+        <div
+          class="service-item"
+          style="
+            flex: 1 1 calc(25% - 20px);
+            min-width: 250px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <img
+            src="service.png"
+            alt="Service 3 Icon"
+            style="width: 120px; height: 120px; margin-bottom: 15px"
+          />
+          <h3
+            style="
+              font-size: 25px;
+              background: linear-gradient(180deg, #ffffff 0%, #f49ecc 80%);
+              -webkit-background-clip: text;
+              color: transparent;
+              margin-bottom: 10px;
+            "
+          >
+            Fancy a Coffee?
+          </h3>
+          <p style="font-size: 14px; color: #fff">
+            Pop in for a coffee and a chat. Whether you’re a client, a potential
+            client or just need some insider info, come on in – we don’t charge
+            for coffee and we don’t charge for chats.  
+          </p>
+        </div>
+        <!-- Service 4 -->
+        <div
+          class="service-item"
+          style="
+            flex: 1 1 calc(25% - 20px);
+            min-width: 250px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <img
+            src="service.png"
+            alt="Service 4 Icon"
+            style="width: 120px; height: 120px; margin-bottom: 15px"
+          />
+          <h3
+            style="
+              font-size: 25px;
+              background: linear-gradient(180deg, #ffffff 0%, #f49ecc 80%);
+              -webkit-background-clip: text;
+              color: transparent;
+              margin-bottom: 10px;
+            "
+          >
+            Fixed Monthly Fees
+          </h3>
+          <p style="font-size: 14px; color: #fff">
+            No more surprise bills and no hourly rates... One monthly fee –
+            that's it!Limited company rates start from £100 a month.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="slider">
+      <h1 style="text-align: center; margin-bottom: 50px">
+        Trusted by local, national & international SMEs
+      </h1>
+      <div class="slide-track">
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/logos/thumbs/2x/mcdonalds-black-logo.png"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/images/large/2x/starbucks-logo-black-and-white.png"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/logos/large/2x/general-electric-black-logo-png-transparent.png"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/logos/large/2x/nfl-logo-png-transparent.png"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/logos/large/2x/mercedes-benz-6-logo-png-transparent.png"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/logos/large/2x/hogwarts-logo-png-transparent.png"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/logos/thumbs/2x/mcdonalds-black-logo.png"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/images/large/2x/starbucks-logo-black-and-white.png"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/logos/large/2x/general-electric-black-logo-png-transparent.png"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/logos/large/2x/nfl-logo-png-transparent.png"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/logos/large/2x/mercedes-benz-6-logo-png-transparent.png"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/logos/large/2x/hogwarts-logo-png-transparent.png"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/logos/thumbs/2x/mcdonalds-black-logo.png"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/images/large/2x/starbucks-logo-black-and-white.png"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/logos/large/2x/general-electric-black-logo-png-transparent.png"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/logos/large/2x/nfl-logo-png-transparent.png"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/logos/large/2x/mercedes-benz-6-logo-png-transparent.png"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://cdn.freebiesupply.com/logos/large/2x/hogwarts-logo-png-transparent.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <p
+        style="
+          text-align: center;
+          color: rgb(255, 255, 255, 0.5);
+          margin-top: 50px;
+        "
+      >
+        GENIO is used by over 1337 companies across the UK
+      </p>
+    </div>
+    <div
+      class="partners"
+      style="
+        background-color: #2e1e2a;
+        text-align: center;
+        position: relative;
+        margin-bottom: 100px;
+      "
+    >
+      <div style="width: 80%; margin: 0 auto; max-width: 900px">
+        <div
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <!-- First Image -->
+          <img
+            src="/Genio White Out 2.png"
+            alt="Image 1"
+            style="height: 10%; width: 30%; margin-right: 15px; flex: 1"
+          />
+          <!-- White Border Line -->
+          <img
+            src="Line 1.png"
+            alt="White Border Line"
+            style="height: 50%; margin: 0 5px; flex: 0"
+          />
+          <!-- Second Image -->
+          <img
+            src="xero-gold-partner-logo-white 1.png"
+            alt="Image 2"
+            style="height: 30%; width: 30%; margin-left: 5px; flex: 1"
+          />
+        </div>
+        <p style="color: white; margin-top: 10px; padding-bottom: 20px">
+          Genio Accountants are proud Gold Partners of Xero, showcasing their
+          expertise in delivering exceptional cloud-based accounting services.
+        </p>
+      </div>
+    </div>
+    <section>
+      <div class="grid-container">
+        <!-- Full-width section -->
+        <div
+          class="grid-item"
+          style="
+            grid-column: span 2;
+            background-color: #3e2568;
+            border-radius: 20px;
+            padding: 60px;
+          "
+        >
+          <div class="row">
+            <div class="col-lg-8 col-sm-12">
+              <h3 class="text-white text-title">Client-Centric Approach</h3>
+              <p class="text-white text-sub">
+                Your satisfaction is our top priority. We go above and beyond to
+                exceed your expectations and build long-lasting relationships
+                based on trust and mutual success.
+              </p>
+            </div>
+            <div class="col-lg-4 col-sm-12 text-center">
+              <div class="gradient-background3">
+                <img src="/service1.png" alt="Image" class="rounded-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid-item" style="background-color: #255468">
+          <div class="content">
+            <h3 class="text-white text-title">Expertise</h3>
+            <p class="text-white text-sub">
+              We pride ourselves on offering more than just a commodity. Our
+              clients are not purchasing our time; they're investing in our
+              expertise. Unlike a clock ticking away minutes, our value lies in
+              the knowledge, skill, and dedication we bring to every project.
+            </p>
+            <div class="image-wrapper">
+              <div class="gradient-background">
+                <img src="/service1.png" alt="Image" class="rounded-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid-item" style="background-color: #632568">
+          <div class="content">
+            <h3 class="text-white text-title">Tech-Driven Solutions</h3>
+            <p class="text-white text-sub">
+              Embrace efficiency with our tech-driven approach. Say goodbye to
+              manual processes and hello to real-time insights.
+            </p>
+            <div class="image-wrapper">
+              <div class="gradient-background2">
+                <img src="/service1.png" alt="Image" class="rounded-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full-width section -->
+        <div
+          class="grid-item"
+          style="
+            grid-column: span 2;
+            background-color: #68254d;
+            border-radius: 20px;
+            padding: 60px;
+          "
+        >
+          <div class="row">
+            <div class="col-lg-8 col-sm-12">
+              <h3 class="text-white text-title">Proactive Advice</h3>
+              <p class="text-white text-sub">
+                Beyond number-crunching, we're your proactive advisors. Our
+                guidance helps you make informed decisions and fuels your
+                growth.
+              </p>
+            </div>
+            <div class="col-lg-4 col-sm-12 text-center">
+              <div class="gradient-background4">
+                <img src="/service1.png" alt="Image" class="rounded-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br /><br />
+    <section>
+      <div class="grid-container">
+        <!-- Full-width section -->
+        <div
+          class="grid-item"
+          style="
+            grid-column: span 2;
+            background-color: #f7f4ea;
+            border-radius: 20px;
+
+            padding: 60px;
+          "
+        >
+          <div class="row">
+            <div class="col-lg-8 col-sm-12">
+              <h3 class="text-white text-title" style="color: #000 !important">
+                Find the right software for your business
+              </h3>
+
+              <button
+                class="btn-grid"
+                type="submit"
+                style="
+                  background: linear-gradient(
+                    180deg,
+                    #ffffff 0%,
+                    #4e4e4e 0%,
+                    #1c1c1c 100%
+                  );
+                  border-radius: 25px;
+                  padding: 5px 12px;
+                  margin-top: 40px;
+                "
+              >
+                <span class="front" style="color: #fff; font-size: 20px"
+                  >Enquire Now</span
+                >
+              </button>
+            </div>
+            <div class="col-lg-4 col-sm-12 text-center">
+              <div class="gradient-background5">
+                <img src="/service1.png" alt="Image" class="rounded-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Full-width section -->
+        <div
+          class="grid-item"
+          style="
+            grid-column: span 2;
+            background-color: #eaeaf7;
+            border-radius: 20px;
+
+            padding: 60px;
+          "
+        >
+          <div class="row">
+            <div class="col-lg-8 col-sm-12">
+              <h3 class="text-white text-title" style="color: #000 !important">
+                Swap software if you aren’t happy with your current provider
+              </h3>
+
+              <button
+                class="btn-grid"
+                type="submit"
+                style="
+                  background: linear-gradient(
+                    180deg,
+                    #ffffff 0%,
+                    #4e4e4e 0%,
+                    #1c1c1c 100%
+                  );
+                  border-radius: 25px;
+                  padding: 5px 12px;
+                  margin-top: 40px;
+                "
+              >
+                <span class="front" style="color: #fff; font-size: 20px"
+                  >Enquire Now</span
+                >
+              </button>
+            </div>
+            <div class="col-lg-4 col-sm-12 text-center">
+              <div class="gradient-background6">
+                <img src="/service1.png" alt="Image" class="rounded-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Full-width section -->
+        <div
+          class="grid-item"
+          style="
+            grid-column: span 2;
+            background-color: #eaf7ea;
+            border-radius: 20px;
+
+            padding: 60px;
+          "
+        >
+          <div class="row">
+            <div class="col-lg-8 col-sm-12">
+              <h3 class="text-white text-title" style="color: #000 !important">
+                Learn about the capabilities of the software to make your
+                business more efficient
+              </h3>
+
+              <button
+                class="btn-grid"
+                type="submit"
+                style="
+                  background: linear-gradient(
+                    180deg,
+                    #ffffff 0%,
+                    #4e4e4e 0%,
+                    #1c1c1c 100%
+                  );
+                  border-radius: 25px;
+                  padding: 5px 12px;
+                  margin-top: 10px;
+                "
+              >
+                <span class="front" style="color: #fff; font-size: 20px"
+                  >Enquire Now</span
+                >
+              </button>
+            </div>
+            <div class="col-lg-4 col-sm-12 text-center">
+              <div class="gradient-background7">
+                <img src="/service1.png" alt="Image" class="rounded-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br /><br />
+    <section>
+      <div class="grid-container">
+        <!-- Full-width section -->
+        <div
+          class="grid-item"
+          style="
+            grid-column: span 2;
+            background-color: #f7f4ea;
+            border-radius: 20px;
+
+            padding: 60px;
+          "
+        >
+          <div class="row">
+            <div class="col-lg-8 col-sm-12">
+              <h3 class="text-white text-title" style="color: #000 !important">
+                Tax Planning Meetings
+              </h3>
+
+              <p class="text-white text-sub" style="color: #000 !important">
+                Most accountants now are proactive in their tax planning and
+                advice We demonstrate this with our clients benefiting from tax
+                advice and planning during the financial year – not after it...!
+                This service also includes an estimate of your potential tax
+                liabilities to ensure there are no nasty surprises.
+              </p>
+
+              <button
+                class="btn-grid"
+                type="submit"
+                style="
+                  background: linear-gradient(
+                    180deg,
+                    #ffffff 0%,
+                    #4e4e4e 0%,
+                    #1c1c1c 100%
+                  );
+                  border-radius: 25px;
+                  padding: 5px 12px;
+                  margin-top: 40px;
+                  cursor: pointer;
+                "
+              >
+                <span class="front" style="color: #fff; font-size: 20px"
+                  >Enquire Now</span
+                >
+              </button>
+            </div>
+            <div class="col-lg-4 col-sm-12 text-center">
+              <div class="gradient-background8">
+                <img src="/service1.png" alt="Image" class="rounded-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <form class="my-form" style="margin-top: 200px; margin-bottom: 200px">
+      <div class="container">
+        <h1 style="text-align: center">Contact Us</h1>
+        <ul>
+          <li>
+            <div class="grid grid-2" style="position: relative">
+              <i
+                class="fa-regular fa-address-card"
+                style="
+                  position: absolute;
+                  left: 15px;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  z-index: 10;
+                  color: #fff;
+                "
+              ></i>
+              <input
+                type="text"
+                placeholder="Name"
+                required
+                style="border-radius: 25px; padding-left: 40px"
+              />
+            </div>
+          </li>
+          <li>
+            <div class="grid grid-2" style="position: relative">
+              <div style="position: relative">
+                <i
+                  class="fas fa-envelope"
+                  style="
+                    position: absolute;
+                    left: 15px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    z-index: 10;
+                    color: #fff;
+                  "
+                ></i>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  required
+                  style="border-radius: 25px; padding-left: 40px"
+                />
+              </div>
+              <div style="position: relative">
+                <i
+                  class="fas fa-t"
+                  style="
+                    position: absolute;
+                    left: 15px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    z-index: 10;
+                    color: #fff;
+                  "
+                ></i>
+                <input
+                  type="text"
+                  placeholder="Subject"
+                  style="border-radius: 25px; padding-left: 40px"
+                />
+              </div>
+            </div>
+          </li>
+          <li style="position: relative">
+            <i
+              class="fa-solid fa-align-justify"
+              style="
+                position: absolute;
+                left: 15px;
+                top: 30px;
+                z-index: 10;
+                color: #fff;
+              "
+            ></i>
+            <textarea
+              placeholder="Message"
+              style="border-radius: 25px; padding-left: 40px"
+            ></textarea>
+          </li>
+          <li>
+            <div class="grid grid-3">
+              <button
+                class="btn-grid"
+                type="submit"
+                style="
+                  background: linear-gradient(180deg, #ffffff 0%, #dedbff 100%);
+                  border-radius: 25px;
+                  padding: 5px 2px;
+                "
+              >
+                <span class="front" style="color: #3c3c3c">Send Email</span>
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </form>
+
+    <section class="latest-news">
+      <h2>Latest news</h2>
+      <div class="news-container">
+        <div class="news-card">
+          <img src="/tax2.jpg" alt="Tax-free childcare" />
+          <h3>Tax-free child care</h3>
+          <p>
+            21/03/2024 – HMRC is reminding parents that they may be eligible for
+            Tax-Free Childcare (TFC) to help pay for Easter school holidays.
+            <a href="article.html">More...</a>
+          </p>
+        </div>
+        <div class="news-card">
+          <img src="/tax.png" alt="Invest and save tax" />
+          <h3>Invest and save tax</h3>
+          <p>
+            21/03/2024 – The Annual Investment Allowance (AIA) is a generous tax
+            relief that allows for the total amount of qualifying...
+            <a href="article.html">More...</a>
+          </p>
+        </div>
+        <div class="news-card">
+          <img src="tax.png" alt="National Insurance record" />
+          <h3>Check your National Insurance record</h3>
+          <p>
+            21/03/2024 – There is an online service available on HMRC to check
+            your National Insurance Contributions (NIC) record online.
+            <a href="article.html">More...</a>
+          </p>
+        </div>
+        <div class="news-card">
+          <img src="tax.png" alt="Workplace pension responsibilities" />
+          <h3>Workplace pension responsibilities</h3>
+          <p>
+            21/03/2024 – Automatic enrolment for workplace pensions has helped
+            many employees make provision for their retirement, with
+            employers... <a href="article.html">More...</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Contact Us, Hampshire, and Wartling Combined -->
+        <!-- <div class="footer-column bordered">
+          <h3>Contact us</h3>
+          <p>
+            <strong>Main Office</strong><br />33a Portsmouth Rd<br />Woolston<br />Southampton<br />SO19
+            9BA
+          </p>
+          <p>
+            Tel: 02382 123 336<br />Email:
+            <a href="mailto:hello@genio-accountants.co.uk"
+              >hello@genio-accountants.co.uk</a
+            >
+          </p>
+        </div>
+
+        <div class="footer-column bordered">
+          <h3>Hampshire</h3>
+          <p>
+            <strong>Satellite Office</strong><br />The Old Bond Store<br />Back
+            of the Walls<br />Hampshire<br />Southampton<br />SO14 3BH
+          </p>
+          <p>Tel: 03452 222 1066 / 02382 123 336</p>
+        </div>
+
+        <div class="footer-column bordered">
+          <h3>Wartling</h3>
+          <p>
+            <strong>Satellite Office</strong><br />Well House<br />Wartling
+            Road<br />Wartling<br />Eastbourne<br />BN27 7XL
+          </p>
+          <p>Tel: 03452 222 1066 / 02382 123 336</p>
+        </div> -->
+
+        <div class="bordered-group">
+          <div class="footer-column">
+            <h3>Contact us</h3>
+            <p>
+              <strong>Main Office</strong><br />33a Portsmouth Rd<br />Woolston<br />Southampton<br />SO19
+              9BA
+            </p>
+            <p>
+              Tel: 02382 123 336<br />Email:
+              <a href="mailto:hello@genio-accountants.co.uk"
+                >hello@genio-accountants.co.uk</a
+              >
+            </p>
+          </div>
+
+          <div class="footer-column">
+            <h3>Hampshire</h3>
+            <p>
+              <strong>Satellite Office</strong><br />The Old Bond Store<br />Back
+              of the Walls<br />Hampshire<br />Southampton<br />SO14 3BH
+            </p>
+            <p>Tel: 03452 222 1066 / 02382 123 336</p>
+          </div>
+
+          <div class="footer-column">
+            <h3>Wartling</h3>
+            <p>
+              <strong>Satellite Office</strong><br />Well House<br />Wartling
+              Road<br />Wartling<br />Eastbourne<br />BN27 7XL
+            </p>
+            <p>Tel: 03452 222 1066 / 02382 123 336</p>
+          </div>
+        </div>
+        <!-- Visit Us Section -->
+        <div class="footer-column">
+          <h3>Visit Us</h3>
+          <p>
+            Monday - Friday 09:00 - 17:30<br />Evening and Weekend appointments
+            are available on request.
+          </p>
+          <p>
+            To make an appointment, please email
+            <a href="mailto:hello@genio-accountants.co.uk"
+              >hello@genio-accountants.co.uk</a
+            ><br />or call us on 02382 123 336.
+          </p>
+        </div>
+
+        <!-- Newsletter Section -->
+        <div class="footer-column">
+          <h3>Newsletter Sign-Up</h3>
+          <p>
+            With our newsletter, you automatically receive our latest news by
+            email and get access to the archive including advanced search
+            options!
+          </p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" required />
+            <!-- <button type="submit">➔</button> -->
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-logos">
+          <img src="free.png" alt="FreeAgent" class="footer-logo" />
+          <img src="sage.png" alt="Sage" class="footer-logo" />
+        </div>
+        <p class="footer-text">
+          Copyright © 2019-2024 GENIO Ltd T/A Genio Accountants VAT Number:
+          GB304426811<br />
+          Company Number: 11269181 Address: 33a Portsmouth Road, Southampton,
+          SO19 9BA
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="/cube.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
+    <!-- scrollIt js -->
+    <script src="js/scrollIt.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script>
+      wow = new WOW();
+      wow.init();
+      $(document).ready(function (e) {
+        $("#video-icon").on("click", function (e) {
+          e.preventDefault();
+          $(".video-popup").css("display", "flex");
+          $(".iframe-src").slideDown();
+        });
+        $(".video-popup").on("click", function (e) {
+          var $target = e.target.nodeName;
+          var video_src = $(this).find("iframe").attr("src");
+          if ($target != "IFRAME") {
+            $(".video-popup").fadeOut();
+            $(".iframe-src").slideUp();
+            $(".video-popup iframe").attr("src", " ");
+            $(".video-popup iframe").attr("src", video_src);
+          }
+        });
+      });
+
+      $(window).on("scroll", function () {
+        var bodyScroll = $(window).scrollTop(),
+          navbar = $(".navbar");
+
+        if (bodyScroll > 50) {
+          $(".navbar-logo img").attr("src", "images/logo-black.png");
+          navbar.addClass("nav-scroll");
+        } else {
+          $(".navbar-logo img").attr("src", "images/logo.png");
+          navbar.removeClass("nav-scroll");
+        }
+      });
+      $(window).on("load", function () {
+        var bodyScroll = $(window).scrollTop(),
+          navbar = $(".navbar");
+
+        if (bodyScroll > 50) {
+          $(".navbar-logo img").attr("src", "images/logo-black.png");
+          navbar.addClass("nav-scroll");
+        } else {
+          $(".navbar-logo img").attr("src", "images/logo-white.png");
+          navbar.removeClass("nav-scroll");
+        }
+
+        $.scrollIt({
+          easing: "swing", // the easing function for animation
+          scrollTime: 900, // how long (in ms) the animation takes
+          activeClass: "active", // class given to the active nav element
+          onPageChange: null, // function(pageIndex) that is called when page is changed
+          topOffset: -63,
+        });
+      });
+    </script>
+  </body>
+</html>

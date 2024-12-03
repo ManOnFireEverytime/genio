@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Genio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"
+    />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Font Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #cube-container {
+        position: absolute;
+        top: 50%; /* Center the cube in the container */
+        left: 50%;
+        transform: translate(-50%, -50%); /* Exact center */
+        width: 100%;
+        height: 100%;
+        overflow: hidden !important;
+      }
+      canvas {
+        width: 670px !important;
+        overflow: hidden !important;
+      }
+      @media all and (max-width: 991px) {
+        #cube-container {
+          position: relative !important;
+          top: auto !important;
+          left: auto !important;
+          transform: none !important;
+        }
+
+        canvas {
+          height: 882px !important;
+          width: 496px !important;
+          aspect-ratio: auto 496 / 882 !important;
+        }
+      }
+
+      @media all and (max-width: 500px) {
+        #cube-container {
+          position: relative !important;
+          top: auto !important;
+          left: auto !important;
+          transform: none !important;
+        }
+
+        canvas {
+          width: 263px !important;
+          height: 400px !important;
+          aspect-ratio: auto 263 / 400;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <!-- Logo on the left side (above nav-items) -->
+        <a href="index.html" class="navbar-brand">
+          <img src="Genio White Out 2.png" alt="Logo" class="logo" />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="fas fa-bars" style="color: #fff"></span>
+        </button>
+
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="accounting.html">Online Accounting</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="blog.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="resources.html">Resources</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+          <!-- Search Bar -->
+          <form class="d-flex search-form">
+            <div class="input-group">
+              <span class="input-group-text">
+                <i class="fas fa-search"></i>
+              </span>
+              <input
+                class="form-control"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <section class="banner banner2" data-scroll-index="0">
+      <div class="banner-overlay">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="image-containers">
+                <img src="/article.jpg" alt="Office Workspace" />
+                <div class="overlay-content">
+                  <div class="text-content">
+                    <p>Featured</p>
+                    <h2>Company names – new regulations</h2>
+                    <p class="mobile-hide">
+                      A recent post by Companies House confirmed that they are
+                      now using new powers to challenge the registration of
+                      certain company names.
+                    </p>
+                  </div>
+                  <div class="icon">
+                    <i class="fa-solid fa-arrow-right-long"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="latest-news latest-news2">
+      <h2>Recent blog posts</h2>
+      <div class="news-container">
+        <div class="news-card">
+          <img src="/tax2.jpg" alt="Tax-free childcare" />
+          <h3>Tax-free child care</h3>
+          <p>21/03/2024</p>
+
+          <p>
+            HMRC is reminding parents that they may be eligible for Tax-Free
+            Childcare (TFC) to help pay for Easter school holidays.
+          </p>
+          <a href="article.html">More...</a>
+        </div>
+        <div class="news-card">
+          <img src="/tax2.jpg" alt="Tax-free childcare" />
+          <h3>Tax-free child care</h3>
+          <p>21/03/2024</p>
+
+          <p>
+            HMRC is reminding parents that they may be eligible for Tax-Free
+            Childcare (TFC) to help pay for Easter school holidays.
+          </p>
+          <a href="article.html">More...</a>
+        </div>
+        <div class="news-card">
+          <img src="/tax2.jpg" alt="Tax-free childcare" />
+          <h3>Tax-free child care</h3>
+          <p>21/03/2024</p>
+
+          <p>
+            HMRC is reminding parents that they may be eligible for Tax-Free
+            Childcare (TFC) to help pay for Easter school holidays.
+          </p>
+          <a href="article.html">More...</a>
+        </div>
+        <div class="news-card">
+          <img src="/tax2.jpg" alt="Tax-free childcare" />
+          <h3>Tax-free child care</h3>
+          <p>21/03/2024</p>
+
+          <p>
+            HMRC is reminding parents that they may be eligible for Tax-Free
+            Childcare (TFC) to help pay for Easter school holidays.
+          </p>
+          <a href="article.html">More...</a>
+        </div>
+        <div class="news-card">
+          <img src="/tax2.jpg" alt="Tax-free childcare" />
+          <h3>Tax-free child care</h3>
+          <p>21/03/2024</p>
+
+          <p>
+            HMRC is reminding parents that they may be eligible for Tax-Free
+            Childcare (TFC) to help pay for Easter school holidays.
+          </p>
+          <a href="article.html">More...</a>
+        </div>
+        <div class="news-card">
+          <img src="/tax2.jpg" alt="Tax-free childcare" />
+          <h3>Tax-free child care</h3>
+          <p>21/03/2024</p>
+
+          <p>
+            HMRC is reminding parents that they may be eligible for Tax-Free
+            Childcare (TFC) to help pay for Easter school holidays.
+          </p>
+          <a href="article.html">More...</a>
+        </div>
+        <div class="news-card">
+          <img src="/tax2.jpg" alt="Tax-free childcare" />
+          <h3>Tax-free child care</h3>
+          <p>21/03/2024</p>
+
+          <p>
+            HMRC is reminding parents that they may be eligible for Tax-Free
+            Childcare (TFC) to help pay for Easter school holidays.
+          </p>
+          <a href="article.html">More...</a>
+        </div>
+        <div class="news-card">
+          <img src="/tax2.jpg" alt="Tax-free childcare" />
+          <h3>Tax-free child care</h3>
+          <p>21/03/2024</p>
+
+          <p>
+            HMRC is reminding parents that they may be eligible for Tax-Free
+            Childcare (TFC) to help pay for Easter school holidays.
+          </p>
+          <a href="article.html">More...</a>
+        </div>
+        <div class="news-card">
+          <img src="/tax2.jpg" alt="Tax-free childcare" />
+          <h3>Tax-free child care</h3>
+          <p>21/03/2024</p>
+
+          <p>
+            HMRC is reminding parents that they may be eligible for Tax-Free
+            Childcare (TFC) to help pay for Easter school holidays.
+          </p>
+          <a href="article.html">More...</a>
+        </div>
+      </div>
+      <div class="text-center">
+        <button
+          class="btn-grid"
+          type="submit"
+          style="
+            background: linear-gradient(180deg, #ffffff 0%, #dedbff 100%);
+            border-radius: 25px;
+            padding: 5px 15px;
+            margin-top: 20px;
+            cursor: pointer;
+          "
+        >
+          <span class="front" style="color: #3c3c3c">Load More</span>
+        </button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Contact Us, Hampshire, and Wartling Combined -->
+        <!-- <div class="footer-column bordered">
+          <h3>Contact us</h3>
+          <p>
+            <strong>Main Office</strong><br />33a Portsmouth Rd<br />Woolston<br />Southampton<br />SO19
+            9BA
+          </p>
+          <p>
+            Tel: 02382 123 336<br />Email:
+            <a href="mailto:hello@genio-accountants.co.uk"
+              >hello@genio-accountants.co.uk</a
+            >
+          </p>
+        </div>
+
+        <div class="footer-column bordered">
+          <h3>Hampshire</h3>
+          <p>
+            <strong>Satellite Office</strong><br />The Old Bond Store<br />Back
+            of the Walls<br />Hampshire<br />Southampton<br />SO14 3BH
+          </p>
+          <p>Tel: 03452 222 1066 / 02382 123 336</p>
+        </div>
+
+        <div class="footer-column bordered">
+          <h3>Wartling</h3>
+          <p>
+            <strong>Satellite Office</strong><br />Well House<br />Wartling
+            Road<br />Wartling<br />Eastbourne<br />BN27 7XL
+          </p>
+          <p>Tel: 03452 222 1066 / 02382 123 336</p>
+        </div> -->
+
+        <div class="bordered-group">
+          <div class="footer-column">
+            <h3>Contact us</h3>
+            <p>
+              <strong>Main Office</strong><br />33a Portsmouth Rd<br />Woolston<br />Southampton<br />SO19
+              9BA
+            </p>
+            <p>
+              Tel: 02382 123 336<br />Email:
+              <a href="mailto:hello@genio-accountants.co.uk"
+                >hello@genio-accountants.co.uk</a
+              >
+            </p>
+          </div>
+
+          <div class="footer-column">
+            <h3>Hampshire</h3>
+            <p>
+              <strong>Satellite Office</strong><br />The Old Bond Store<br />Back
+              of the Walls<br />Hampshire<br />Southampton<br />SO14 3BH
+            </p>
+            <p>Tel: 03452 222 1066 / 02382 123 336</p>
+          </div>
+
+          <div class="footer-column">
+            <h3>Wartling</h3>
+            <p>
+              <strong>Satellite Office</strong><br />Well House<br />Wartling
+              Road<br />Wartling<br />Eastbourne<br />BN27 7XL
+            </p>
+            <p>Tel: 03452 222 1066 / 02382 123 336</p>
+          </div>
+        </div>
+        <!-- Visit Us Section -->
+        <div class="footer-column">
+          <h3>Visit Us</h3>
+          <p>
+            Monday - Friday 09:00 - 17:30<br />Evening and Weekend appointments
+            are available on request.
+          </p>
+          <p>
+            To make an appointment, please email
+            <a href="mailto:hello@genio-accountants.co.uk"
+              >hello@genio-accountants.co.uk</a
+            ><br />or call us on 02382 123 336.
+          </p>
+        </div>
+
+        <!-- Newsletter Section -->
+        <div class="footer-column">
+          <h3>Newsletter Sign-Up</h3>
+          <p>
+            With our newsletter, you automatically receive our latest news by
+            email and get access to the archive including advanced search
+            options!
+          </p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" required />
+            <!-- <button type="submit">➔</button> -->
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-logos">
+          <img src="free.png" alt="FreeAgent" class="footer-logo" />
+          <img src="sage.png" alt="Sage" class="footer-logo" />
+        </div>
+        <p class="footer-text">
+          Copyright © 2019-2024 GENIO Ltd T/A Genio Accountants VAT Number:
+          GB304426811<br />
+          Company Number: 11269181 Address: 33a Portsmouth Road, Southampton,
+          SO19 9BA
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="/cube.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
+    <!-- scrollIt js -->
+    <script src="js/scrollIt.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script>
+      wow = new WOW();
+      wow.init();
+      $(document).ready(function (e) {
+        $("#video-icon").on("click", function (e) {
+          e.preventDefault();
+          $(".video-popup").css("display", "flex");
+          $(".iframe-src").slideDown();
+        });
+        $(".video-popup").on("click", function (e) {
+          var $target = e.target.nodeName;
+          var video_src = $(this).find("iframe").attr("src");
+          if ($target != "IFRAME") {
+            $(".video-popup").fadeOut();
+            $(".iframe-src").slideUp();
+            $(".video-popup iframe").attr("src", " ");
+            $(".video-popup iframe").attr("src", video_src);
+          }
+        });
+      });
+
+      $(window).on("scroll", function () {
+        var bodyScroll = $(window).scrollTop(),
+          navbar = $(".navbar");
+
+        if (bodyScroll > 50) {
+          // Hide the logo on scroll
+          $(".navbar-brand img").hide();
+          navbar.addClass("nav-scroll");
+        } else {
+          // Show the logo when at the top of the page
+          $(".navbar-brand img").show();
+          navbar.removeClass("nav-scroll");
+        }
+      });
+
+      $(window).on("load", function () {
+        var bodyScroll = $(window).scrollTop(),
+          navbar = $(".navbar");
+
+        if (bodyScroll > 50) {
+          $(".navbar-logo img").attr("src", "images/logo-black.png");
+          navbar.addClass("nav-scroll");
+        } else {
+          $(".navbar-logo img").attr("src", "images/logo-white.png");
+          navbar.removeClass("nav-scroll");
+        }
+
+        $.scrollIt({
+          easing: "swing", // the easing function for animation
+          scrollTime: 900, // how long (in ms) the animation takes
+          activeClass: "active", // class given to the active nav element
+          onPageChange: null, // function(pageIndex) that is called when page is changed
+          topOffset: -63,
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Cube Diagram</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: #191919;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        padding: 20px;
+      }
+
+      .left-panel,
+      .right-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        padding: 20px 30px;
+        text-align: center;
+        color: inherit;
+        font-size: inherit;
+        cursor: pointer;
+        outline: none;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+
+      .item:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
+      }
+
+      .icon {
+        font-size: 32px;
+        margin-bottom: 10px;
+      }
+
+      .label {
+        font-size: 18px;
+      }
+
+      .center {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 450px;
+        height: 450px;
+      }
+
+      #cube-container {
+        position: absolute;
+        top: 50%; /* Center the cube in the container */
+        left: 50%;
+        transform: translate(-50%, -50%); /* Exact center */
+        width: 100%;
+        height: 100%;
+      }
+
+      .center:after {
+        content: "";
+        width: 450px;
+        height: 450px;
+        border: 1px solid #96227a;
+        border-radius: 50%;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .left-panel,
+        .right-panel {
+          flex-direction: row;
+          justify-content: space-between;
+          gap: 20px;
+        }
+
+        .center {
+          margin: 30px 0;
+          width: 300px;
+          height: 300px;
+        }
+
+        .center:after {
+          width: 300px;
+          height: 300px;
+        }
+
+        .item {
+          padding: 15px 20px;
+        }
+
+        .icon {
+          font-size: 24px;
+        }
+
+        .label {
+          font-size: 16px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .left-panel,
+        .right-panel {
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+        }
+
+        .center {
+          width: 200px;
+          height: 200px;
+        }
+
+        .center:after {
+          width: 200px;
+          height: 200px;
+        }
+
+        .item {
+          padding: 10px 15px;
+        }
+
+        .icon {
+          font-size: 20px;
+        }
+
+        .label {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-panel">
+        <button id="rotateButton2" class="item">
+          <div class="label">Tax</div>
+          <div class="icon">📄</div>
+        </button>
+        <button id="rotateButton3" class="item">
+          <div class="label">VAT</div>
+          <div class="icon">📄</div>
+        </button>
+        <button id="rotateButton" class="item">
+          <div class="label">Accounts</div>
+          <div class="icon">📄</div>
+        </button>
+      </div>
+
+      <div class="center">
+        <div id="line-container"></div>
+        <div id="cube-container"></div>
+      </div>
+
+      <div class="right-panel">
+        <button id="rotateButton4" class="item">
+          <div class="label">Lorem</div>
+          <div class="icon">📄</div>
+        </button>
+        <button class="item">
+          <div class="label">Ipsum</div>
+          <div class="icon">📄</div>
+        </button>
+        <button class="item">
+          <div class="label">Pnh</div>
+          <div class="icon">📄</div>
+        </button>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="cube.js"></script>
+  </body>
+</html>
