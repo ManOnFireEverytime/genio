@@ -193,17 +193,17 @@
     >
       <div class="cubes-container">
         <div class="left-panel">
-          <button id="rotateButton2" class="item">
+          <button id="rotateButton2" class="item left-top">
             <div class="label">Tax</div>
-            <div class="icon"><i class="fa-solid fa-receipt"></i></div>
+            <div class="icon">📄</div>
           </button>
-          <button id="rotateButton3" class="item">
+          <button id="rotateButton3" class="item left-mid">
             <div class="label">VAT</div>
-            <div class="icon"><i class="fa-solid fa-receipt"></i></div>
+            <div class="icon">📄</div>
           </button>
-          <button id="rotateButton" class="item">
+          <button id="rotateButton" class="item left-bottom">
             <div class="label">Accounts</div>
-            <div class="icon"><i class="fa-solid fa-receipt"></i></div>
+            <div class="icon">📄</div>
           </button>
         </div>
 
@@ -213,24 +213,51 @@
         </div>
 
         <div class="right-panel">
-          <button id="rotateButton4" class="item">
+          <button id="rotateButton4" class="item right-top">
             <div class="label">Lorem</div>
-            <div class="icon"><i class="fa-solid fa-receipt"></i></div>
+            <div class="icon">📄</div>
           </button>
-          <button class="item">
+          <button class="item right-mid">
             <div class="label">Ipsum</div>
-            <div class="icon"><i class="fa-solid fa-receipt"></i></div>
+            <div class="icon">📄</div>
           </button>
-          <button class="item">
+          <button class="item right-bottom">
             <div class="label">Pnh</div>
-            <div class="icon"><i class="fa-solid fa-receipt"></i></div>
+            <div class="icon">📄</div>
+          </button>
+        </div>
+
+        <div class="bottom-panel">
+          <button id="rotateButton2s" class="item left-top-mobile">
+            <div class="label">Tax</div>
+            <div class="icon">📄</div>
+          </button>
+          <button id="rotateButton4s" class="item right-top-mobile">
+            <div class="label">Lorem</div>
+            <div class="icon">📄</div>
+          </button>
+          <button id="rotateButton3s" class="item left-mid-mobile">
+            <div class="label">VAT</div>
+            <div class="icon">📄</div>
+          </button>
+          <button class="item right-mid-mobile">
+            <div class="label">Ipsum</div>
+            <div class="icon">📄</div>
+          </button>
+          <button id="rotateButtons" class="item left-bottom-mobile">
+            <div class="label">Accounts</div>
+            <div class="icon">📄</div>
+          </button>
+          <button class="item right-bottom-mobile">
+            <div class="label">Pnh</div>
+            <div class="icon">📄</div>
           </button>
         </div>
       </div>
     </section>
 
-    <section>
-      <div class="grid-container">
+    <section id="tax">
+      <div class="grid-container service-grid active">
         <div
           class="grid-item"
           style="
@@ -285,13 +312,13 @@
         </div>
       </div>
     </section>
-    <section>
-      <div class="grid-container">
+    <section id="vat">
+      <div class="grid-container service-grid">
         <div
           class="grid-item"
           style="
             grid-column: span 2;
-            background-color: #f7f4ea;
+            background-color: #eaf7ea;
             border-radius: 20px;
 
             padding: 60px;
@@ -301,6 +328,62 @@
             <div class="col-lg-8 col-sm-12">
               <h3 class="text-white text-title" style="color: #000 !important">
                 VAT Planning Meetings
+              </h3>
+
+              <p class="text-white text-sub" style="color: #000 !important">
+                Most accountants now are proactive in their tax planning and
+                advice We demonstrate this with our clients benefiting from tax
+                advice and planning during the financial year – not after it...!
+                This service also includes an estimate of your potential tax
+                liabilities to ensure there are no nasty surprises.
+              </p>
+
+              <button
+                class="btn-grid"
+                type="submit"
+                style="
+                  background: linear-gradient(
+                    180deg,
+                    #ffffff 0%,
+                    #4e4e4e 0%,
+                    #1c1c1c 100%
+                  );
+                  border-radius: 25px;
+                  padding: 5px 12px;
+                  margin-top: 40px;
+                  cursor: pointer;
+                "
+              >
+                <span class="front" style="color: #fff; font-size: 20px"
+                  >Enquire Now</span
+                >
+              </button>
+            </div>
+            <div class="col-lg-4 col-sm-12 text-center">
+              <div class="gradient-background8">
+                <img src="service1.png" alt="Image" class="rounded-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="accounts">
+      <div class="grid-container service-grid">
+        <div
+          class="grid-item"
+          style="
+            grid-column: span 2;
+            background-color: #eaeaf7;
+            border-radius: 20px;
+
+            padding: 60px;
+          "
+        >
+          <div class="row">
+            <div class="col-lg-8 col-sm-12">
+              <h3 class="text-white text-title" style="color: #000 !important">
+                Accounts Planning Meetings
               </h3>
 
               <p class="text-white text-sub" style="color: #000 !important">
@@ -570,6 +653,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="cube.js"></script>
+    <script src="line.js"></script>
     <script src="testimonial.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script

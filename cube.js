@@ -302,13 +302,67 @@ document.getElementById("rotateButton").addEventListener("click", () => {
 
     smoothRotate(0);
 
-    // Set isRotating to true on mouse hover
-    model.addEventListener("mousemove", () => {
-      isRotating = true;
+    // Show the desired grid
+    const allGrids = document.querySelectorAll(".service-grid");
+    const targetGrid = document.querySelector("#accounts .service-grid");
+
+    // Remove active class from all grids
+    allGrids.forEach((grid) => {
+      grid.classList.remove("active");
     });
+
+    // Add active class to the target grid
+    targetGrid.classList.add("active");
   }
 });
+document.getElementById("rotateButtons").addEventListener("click", () => {
+  if (model) {
+    // Stop continuous rotation
+    isRotating = false;
 
+    // Create a smooth rotation to the front face
+    const startRotation = model.rotation.clone();
+    const targetRotation = new THREE.Euler(0, -Math.PI / 2, 0);
+
+    function smoothRotate(progress) {
+      model.rotation.x = THREE.MathUtils.lerp(
+        startRotation.x,
+        targetRotation.x,
+        progress
+      );
+      model.rotation.y = THREE.MathUtils.lerp(
+        startRotation.y,
+        targetRotation.y,
+        progress
+      );
+      model.rotation.z = THREE.MathUtils.lerp(
+        startRotation.z,
+        targetRotation.z,
+        progress
+      );
+
+      renderer.render(scene, camera);
+
+      if (progress < 1) {
+        requestAnimationFrame(() => smoothRotate(progress + 0.05));
+      }
+    }
+
+    smoothRotate(0);
+
+    // Show the desired grid
+    const allGrids = document.querySelectorAll(".service-grid");
+    const targetGrid = document.querySelector("#accounts .service-grid");
+
+    // Remove active class from all grids
+    allGrids.forEach((grid) => {
+      grid.classList.remove("active");
+    });
+
+    // Add active class to the target grid
+    targetGrid.classList.add("active");
+  }
+});
 document.getElementById("rotateButton2").addEventListener("click", () => {
   if (model) {
     // Stop continuous rotation
@@ -343,6 +397,66 @@ document.getElementById("rotateButton2").addEventListener("click", () => {
     }
 
     smoothRotate(0);
+
+    // Show the desired grid
+    const allGrids = document.querySelectorAll(".service-grid");
+    const targetGrid = document.querySelector("#tax .service-grid");
+
+    // Remove active class from all grids
+    allGrids.forEach((grid) => {
+      grid.classList.remove("active");
+    });
+
+    // Add active class to the target grid
+    targetGrid.classList.add("active");
+  }
+});
+document.getElementById("rotateButton2s").addEventListener("click", () => {
+  if (model) {
+    // Stop continuous rotation
+    isRotating = false;
+
+    // Create a smooth rotation to the front face
+    const startRotation = model.rotation.clone();
+    const targetRotation = new THREE.Euler(0, Math.PI / 2, 0);
+
+    function smoothRotate(progress) {
+      model.rotation.x = THREE.MathUtils.lerp(
+        startRotation.x,
+        targetRotation.x,
+        progress
+      );
+      model.rotation.y = THREE.MathUtils.lerp(
+        startRotation.y,
+        targetRotation.y,
+        progress
+      );
+      model.rotation.z = THREE.MathUtils.lerp(
+        startRotation.z,
+        targetRotation.z,
+        progress
+      );
+
+      renderer.render(scene, camera);
+
+      if (progress < 1) {
+        requestAnimationFrame(() => smoothRotate(progress + 0.05));
+      }
+    }
+
+    smoothRotate(0);
+
+    // Show the desired grid
+    const allGrids = document.querySelectorAll(".service-grid");
+    const targetGrid = document.querySelector("#tax .service-grid");
+
+    // Remove active class from all grids
+    allGrids.forEach((grid) => {
+      grid.classList.remove("active");
+    });
+
+    // Add active class to the target grid
+    targetGrid.classList.add("active");
   }
 });
 document.getElementById("rotateButton3").addEventListener("click", () => {
@@ -379,9 +493,105 @@ document.getElementById("rotateButton3").addEventListener("click", () => {
     }
 
     smoothRotate(0);
+
+    // Show the desired grid
+    const allGrids = document.querySelectorAll(".service-grid");
+    const targetGrid = document.querySelector("#vat .service-grid");
+
+    // Remove active class from all grids
+    allGrids.forEach((grid) => {
+      grid.classList.remove("active");
+    });
+
+    // Add active class to the target grid
+    targetGrid.classList.add("active");
+  }
+});
+document.getElementById("rotateButton3s").addEventListener("click", () => {
+  if (model) {
+    // Stop continuous rotation
+    isRotating = false;
+
+    // Create a smooth rotation to the front face
+    const startRotation = model.rotation.clone();
+    const targetRotation = new THREE.Euler(0, 0, 0);
+
+    function smoothRotate(progress) {
+      model.rotation.x = THREE.MathUtils.lerp(
+        startRotation.x,
+        targetRotation.x,
+        progress
+      );
+      model.rotation.y = THREE.MathUtils.lerp(
+        startRotation.y,
+        targetRotation.y,
+        progress
+      );
+      model.rotation.z = THREE.MathUtils.lerp(
+        startRotation.z,
+        targetRotation.z,
+        progress
+      );
+
+      renderer.render(scene, camera);
+
+      if (progress < 1) {
+        requestAnimationFrame(() => smoothRotate(progress + 0.05));
+      }
+    }
+
+    smoothRotate(0);
+
+    // Show the desired grid
+    const allGrids = document.querySelectorAll(".service-grid");
+    const targetGrid = document.querySelector("#vat .service-grid");
+
+    // Remove active class from all grids
+    allGrids.forEach((grid) => {
+      grid.classList.remove("active");
+    });
+
+    // Add active class to the target grid
+    targetGrid.classList.add("active");
   }
 });
 document.getElementById("rotateButton4").addEventListener("click", () => {
+  if (model) {
+    // Stop continuous rotation
+    isRotating = false;
+
+    // Create a smooth rotation to the front face
+    const startRotation = model.rotation.clone();
+    const targetRotation = new THREE.Euler(-Math.PI / 2, 0, 0);
+
+    function smoothRotate(progress) {
+      model.rotation.x = THREE.MathUtils.lerp(
+        startRotation.x,
+        targetRotation.x,
+        progress
+      );
+      model.rotation.y = THREE.MathUtils.lerp(
+        startRotation.y,
+        targetRotation.y,
+        progress
+      );
+      model.rotation.z = THREE.MathUtils.lerp(
+        startRotation.z,
+        targetRotation.z,
+        progress
+      );
+
+      renderer.render(scene, camera);
+
+      if (progress < 1) {
+        requestAnimationFrame(() => smoothRotate(progress + 0.05));
+      }
+    }
+
+    smoothRotate(0);
+  }
+});
+document.getElementById("rotateButton4s").addEventListener("click", () => {
   if (model) {
     // Stop continuous rotation
     isRotating = false;

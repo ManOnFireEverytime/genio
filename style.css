@@ -1523,6 +1523,15 @@ h6 {
 
 }
 
+.service-grid {
+	display: none;
+}
+
+.service-grid.active {
+	display: block;
+}
+
+
 /* Individual grid item styling */
 .grid-item {
 	background: #632568;
@@ -1838,21 +1847,36 @@ iframe {
 
 .cubes-container {
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
 	align-items: center;
 	position: relative;
 	width: 100%;
 	max-width: 1200px;
 	padding: 20px;
+	color: #fff;
 	margin-top: 100px;
 	margin-bottom: 100px;
+	gap: 30px;
+}
+
+.cubes-container .bottom-panel {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	justify-content: center;
+	gap: 20px;
+	width: 100%;
+	max-width: 600px;
 }
 
 .cubes-container .left-panel,
 .cubes-container .right-panel {
-	display: flex;
-	flex-direction: column;
-	gap: 30px;
+	display: none;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	.cubes-container .bottom-panel {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
 }
 
 .cubes-container .item {
@@ -1862,13 +1886,15 @@ iframe {
 	background: rgba(255, 255, 255, 0.1);
 	border: 1px solid rgba(255, 255, 255, 0.2);
 	border-radius: 8px;
-	padding: 20px 30px;
+	padding: 15px 20px;
 	text-align: center;
 	color: inherit;
-	font-size: inherit;
 	cursor: pointer;
 	outline: none;
 	transition: background-color 0.3s, transform 0.2s;
+	position: relative;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .cubes-container .item:hover {
@@ -1877,14 +1903,12 @@ iframe {
 }
 
 .cubes-container .icon {
-	font-size: 32px;
+	font-size: 24px;
 	margin-bottom: 10px;
-	color: #fff;
 }
 
 .cubes-container .label {
-	font-size: 18px;
-	color: #fff;
+	font-size: 16px;
 }
 
 .cubes-container .center {
@@ -1892,97 +1916,90 @@ iframe {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 450px;
-	height: 450px;
+	width: 300px;
+	height: 300px;
 }
 
 .cubes-container #cube-container {
+	position: absolute !important;
+	top: 50% !important;
+	left: 50% !important;
+	transform: translate(-50%, -50%) !important;
+	width: 250px !important;
+	height: 250px !important;
+	z-index: 10 !important;
+}
+
+.cubes-container .connection-line {
 	position: absolute;
-	top: 50%;
-	/* Center the cube in the container */
-	left: 50%;
-	transform: translate(-50%, -50%);
-	/* Exact center */
-	width: 100%;
-	height: 100%;
+	background: white;
+	opacity: 0.5;
+	z-index: 1;
 }
 
-.cubes-container .center:after {
-	content: "";
-	width: 450px;
-	height: 450px;
-	border: 1px solid #96227a;
-	border-radius: 50%;
+.cubes-container .connection-line-curved {
+	position: absolute;
+	background: white;
+	opacity: 0.5;
+	z-index: 2;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1025px) {
 	.cubes-container {
-		flex-direction: column;
-		align-items: center;
-	}
-
-	.cubes-container .left-panel,
-	.cubes-container .right-panel {
 		flex-direction: row;
 		justify-content: space-between;
-		gap: 20px;
 	}
 
-	.cubes-container .center {
-		margin: 30px 0;
-		width: 300px;
-		height: 300px;
+	.cubes-container .bottom-panel {
+		display: none;
 	}
-
-	.cubes-container .center:after {
-		width: 300px;
-		height: 300px;
-	}
-
-	.cubes-container .item {
-		padding: 15px 20px;
-	}
-
-	.cubes-container .icon {
-		font-size: 24px;
-	}
-
-	.cubes-container .label {
-		font-size: 16px;
-	}
-}
-
-@media (max-width: 480px) {
 
 	.cubes-container .left-panel,
 	.cubes-container .right-panel {
+		display: flex;
 		flex-direction: column;
-		align-items: center;
-		gap: 15px;
+		gap: 50px;
 	}
 
 	.cubes-container .center {
-		width: 200px;
-		height: 200px;
+		width: 550px;
+		height: 550px;
+		position: relative;
 	}
 
 	.cubes-container .center:after {
-		width: 200px;
-		height: 200px;
+		content: "";
+		position: absolute;
+		width: 450px;
+		height: 450px;
+		border: 2px solid rgba(150, 34, 122, 0.5);
+		border-radius: 50%;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1;
+	}
+
+	.cubes-container #cube-container {
+		width: 450px !important;
+		height: 450px !important;
 	}
 
 	.cubes-container .item {
-		padding: 10px 15px;
+		padding: 30px 40px;
+		width: 200px;
 	}
 
 	.cubes-container .icon {
-		font-size: 20px;
+		font-size: 48px;
+		margin-bottom: 15px;
 	}
 
 	.cubes-container .label {
-		font-size: 14px;
+		font-size: 24px;
 	}
 }
+
 
 
 .single-feature {
@@ -2265,18 +2282,6 @@ input {
 		margin-bottom: 20px;
 	}
 
-	#cube-container {
-		position: relative !important;
-		top: auto !important;
-		left: auto !important;
-		transform: none !important;
-	}
-
-	canvas {
-		height: 882px !important;
-		width: 496px !important;
-		aspect-ratio: auto 496 / 882;
-	}
 
 }
 

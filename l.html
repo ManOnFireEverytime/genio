@@ -27,12 +27,7 @@
         padding: 20px;
         gap: 30px;
       }
-      .right-panel {
-        display: none;
-      }
-      .left-panel {
-        display: none;
-      }
+
       .bottom-panel {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -40,6 +35,11 @@
         gap: 20px;
         width: 100%;
         max-width: 600px;
+      }
+
+      .left-panel,
+      .right-panel {
+        display: none;
       }
 
       @media (min-width: 768px) and (max-width: 1024px) {
@@ -106,7 +106,13 @@
         z-index: 1;
       }
 
-      /* Large screen layout */
+      .connection-line-curved {
+        position: absolute;
+        background: white;
+        opacity: 0.5;
+        z-index: 2;
+      }
+
       @media (min-width: 1025px) {
         .cubes-container {
           flex-direction: row;
@@ -162,20 +168,6 @@
           font-size: 24px;
         }
       }
-
-      .connection-line {
-        position: absolute;
-        background: white;
-        opacity: 0.5;
-        z-index: 1;
-      }
-
-      .connection-line-curved {
-        position: absolute;
-        background: white;
-        opacity: 0.5;
-        z-index: 1;
-      }
     </style>
   </head>
   <body>
@@ -185,58 +177,58 @@
           <div class="label">Tax</div>
           <div class="icon">📄</div>
         </button>
-        <button id="rotateButton3" class="item">
+        <button id="rotateButton3" class="item left-mid">
           <div class="label">VAT</div>
           <div class="icon">📄</div>
         </button>
-        <button id="rotateButton" class="item">
+        <button id="rotateButton" class="item left-bottom">
           <div class="label">Accounts</div>
           <div class="icon">📄</div>
         </button>
       </div>
 
       <div class="center">
-        <div id="lines-container"></div>
+        <div id="line-container"></div>
         <div id="cube-container"></div>
       </div>
 
       <div class="right-panel">
-        <button id="rotateButton4" class="item">
+        <button id="rotateButton4" class="item right-top">
           <div class="label">Lorem</div>
           <div class="icon">📄</div>
         </button>
-        <button class="item">
+        <button class="item right-mid">
           <div class="label">Ipsum</div>
           <div class="icon">📄</div>
         </button>
-        <button class="item">
+        <button class="item right-bottom">
           <div class="label">Pnh</div>
           <div class="icon">📄</div>
         </button>
       </div>
 
       <div class="bottom-panel">
-        <button id="rotateButton2-mobile" class="item">
+        <button id="rotateButton2s" class="item left-top-mobile">
           <div class="label">Tax</div>
           <div class="icon">📄</div>
         </button>
-        <button id="rotateButton4-mobile" class="item">
+        <button id="rotateButton4s" class="item right-top-mobile">
           <div class="label">Lorem</div>
           <div class="icon">📄</div>
         </button>
-        <button id="rotateButton3-mobile" class="item">
+        <button id="rotateButton3s" class="item left-mid-mobile">
           <div class="label">VAT</div>
           <div class="icon">📄</div>
         </button>
-        <button class="item">
+        <button class="item right-mid-mobile">
           <div class="label">Ipsum</div>
           <div class="icon">📄</div>
         </button>
-        <button id="rotateButton-mobile" class="item">
+        <button id="rotateButtons" class="item left-bottom-mobile">
           <div class="label">Accounts</div>
           <div class="icon">📄</div>
         </button>
-        <button class="item">
+        <button class="item right-bottom-mobile">
           <div class="label">Pnh</div>
           <div class="icon">📄</div>
         </button>
@@ -244,7 +236,6 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="cube.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const leftTopButton = document.querySelector(".left-top");
@@ -277,7 +268,7 @@
                 (Math.atan2(endY - startY, endX - startX) * 180) / Math.PI;
 
               line.style.width = `${distance}px`;
-              line.style.height = "2px";
+              line.style.height = "12px";
               line.style.transformOrigin = "0 0";
               line.style.transform = `rotate(${angle}deg)`;
               line.style.left = `${startX}px`;
@@ -326,7 +317,7 @@
               path.setAttribute("fill", "none");
               path.setAttribute("stroke", "white");
               path.setAttribute("stroke-opacity", "0.5");
-              path.setAttribute("stroke-width", "2");
+              path.setAttribute("stroke-width", "12");
 
               svg.appendChild(path);
               document.body.appendChild(svg);
@@ -338,9 +329,9 @@
 
             // Curved lines for top and bottom buttons
             createCurvedLine(leftTopButton, true, true);
-            createCurvedLine(leftBottomButton, false, true);
+            createCurvedLine(leftBottomButton, true, true);
             createCurvedLine(rightTopButton, true, false);
-            createCurvedLine(rightBottomButton, false, false);
+            createCurvedLine(rightBottomButton, true, false);
           }
         }
 
@@ -357,5 +348,6 @@
         });
       });
     </script>
+    <script src="cube.js"></script>
   </body>
 </html>
