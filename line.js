@@ -18,13 +18,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const containerRect = cubesContainer.getBoundingClientRect();
         const cubeRect = cubeContainer.getBoundingClientRect();
 
+        // Calculate the center of the cube container
+        const cubeCenterY =
+          cubeRect.top - containerRect.top + cubeRect.height / 2;
+
         const startX = isLeft
           ? buttonRect.right - containerRect.left
           : buttonRect.left - containerRect.left;
-        const startY =
-          buttonRect.top - containerRect.top + buttonRect.height / 2;
+        const startY = cubeCenterY; // Base startY for calculations
+
         const endX = cubeRect.left - containerRect.left + cubeRect.width / 2;
-        const endY = cubeRect.top - containerRect.top + cubeRect.height / 2;
+        const endY = cubeCenterY; // Ensure the line ends at the center of the cube container
 
         const distance = Math.sqrt(
           Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2)
@@ -34,12 +38,14 @@ document.addEventListener("DOMContentLoaded", () => {
           (Math.atan2(endY - startY, endX - startX) * 180) / Math.PI;
 
         line.style.width = `${distance}px`;
-        line.style.height = "12px";
+        line.style.height = "32px";
         line.style.transformOrigin = "0 0";
         line.style.transform = `rotate(${angle}deg)`;
         line.style.position = "absolute";
         line.style.left = `${startX}px`;
-        line.style.top = `${startY}px`;
+
+        // Adjust only the `top` style for the left line
+        line.style.top = isLeft ? `${startY - 32}px` : `${startY}px`;
 
         cubesContainer.appendChild(line);
       }
@@ -88,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         path.setAttribute("fill", "none");
         path.setAttribute("stroke", "white");
         path.setAttribute("stroke-opacity", "0.5");
-        path.setAttribute("stroke-width", "12");
+        path.setAttribute("stroke-width", "32");
 
         svg.appendChild(path);
         cubesContainer.appendChild(svg);

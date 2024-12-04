@@ -3,351 +3,98 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Cube Diagram</title>
+    <title>Meet the Team</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        background: #191919;
-        color: #fff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+      * {
         margin: 0;
-        overflow-x: hidden;
-      }
-
-      .cubes-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-        width: 100%;
-        max-width: 1200px;
-        padding: 20px;
-        gap: 30px;
-      }
-
-      .bottom-panel {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        justify-content: center;
-        gap: 20px;
-        width: 100%;
-        max-width: 600px;
-      }
-
-      .left-panel,
-      .right-panel {
-        display: none;
-      }
-
-      @media (min-width: 768px) and (max-width: 1024px) {
-        .bottom-panel {
-          grid-template-columns: 1fr 1fr 1fr;
-        }
-      }
-
-      .item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 8px;
-        padding: 15px 20px;
-        text-align: center;
-        color: inherit;
-        cursor: pointer;
-        outline: none;
-        transition: background-color 0.3s, transform 0.2s;
-        position: relative;
-        width: 100%;
+        padding: 0;
         box-sizing: border-box;
       }
 
-      .item:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-        transform: scale(1.05);
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
       }
 
-      .icon {
-        font-size: 24px;
-        margin-bottom: 10px;
+      .team-section {
+        text-align: center;
+        background: linear-gradient(180deg, #641f53 0%, #150310 100%);
+        color: white;
+        padding: 50px 0 0 0;
       }
 
-      .label {
-        font-size: 16px;
+      .team-section h1 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
       }
 
-      .center {
-        position: relative;
+      .team-members {
         display: flex;
         justify-content: center;
-        align-items: center;
-        width: 300px;
-        height: 300px;
+        gap: 20px;
+        align-items: flex-end; /* Align items to the bottom of the container */
+        flex-wrap: wrap;
       }
 
-      #cube-container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 250px;
-        height: 250px;
-        z-index: 10;
+      .team-member {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* Ensure image aligns to the bottom */
+        flex: 1;
+        max-width: 450px;
+        text-align: center;
       }
 
-      .connection-line {
-        position: absolute;
-        background: white;
-        opacity: 0.5;
-        z-index: 1;
+      .team-member img {
+        margin-top: -500px;
+        width: 100%;
       }
 
-      .connection-line-curved {
-        position: absolute;
-        background: white;
-        opacity: 0.5;
-        z-index: 2;
+      @media (max-width: 768px) {
+        .team-members {
+          gap: 15px;
+        }
+        .team-member img {
+          margin-top: -100px;
+        }
+
+        .team-section h1 {
+          font-size: 2rem;
+        }
+
+        .team-member {
+          max-width: 100px;
+        }
       }
 
-      @media (min-width: 1025px) {
-        .cubes-container {
-          flex-direction: row;
-          justify-content: space-between;
+      @media (max-width: 480px) {
+        .team-section h1 {
+          font-size: 1.5rem;
         }
 
-        .bottom-panel {
-          display: none;
-        }
-
-        .left-panel,
-        .right-panel {
-          display: flex;
-          flex-direction: column;
-          gap: 50px;
-        }
-
-        .center {
-          width: 650px;
-          height: 650px;
-          position: relative;
-        }
-
-        .center:after {
-          content: "";
-          position: absolute;
-          width: 650px;
-          height: 650px;
-          border: 2px solid rgba(150, 34, 122, 0.5);
-          border-radius: 50%;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 1;
-        }
-
-        #cube-container {
-          width: 450px;
-          height: 450px;
-        }
-
-        .item {
-          padding: 30px 40px;
-          width: 200px;
-        }
-
-        .icon {
-          font-size: 48px;
-          margin-bottom: 15px;
-        }
-
-        .label {
-          font-size: 24px;
+        .team-member {
+          max-width: 80px;
         }
       }
     </style>
   </head>
   <body>
-    <div class="cubes-container">
-      <div class="left-panel">
-        <button id="rotateButton2" class="item left-top">
-          <div class="label">Tax</div>
-          <div class="icon">📄</div>
-        </button>
-        <button id="rotateButton3" class="item left-mid">
-          <div class="label">VAT</div>
-          <div class="icon">📄</div>
-        </button>
-        <button id="rotateButton" class="item left-bottom">
-          <div class="label">Accounts</div>
-          <div class="icon">📄</div>
-        </button>
-      </div>
-
-      <div class="center">
-        <div id="line-container"></div>
-        <div id="cube-container"></div>
-      </div>
-
-      <div class="right-panel">
-        <button id="rotateButton4" class="item right-top">
-          <div class="label">Lorem</div>
-          <div class="icon">📄</div>
-        </button>
-        <button class="item right-mid">
-          <div class="label">Ipsum</div>
-          <div class="icon">📄</div>
-        </button>
-        <button class="item right-bottom">
-          <div class="label">Pnh</div>
-          <div class="icon">📄</div>
-        </button>
-      </div>
-
-      <div class="bottom-panel">
-        <button id="rotateButton2s" class="item left-top-mobile">
-          <div class="label">Tax</div>
-          <div class="icon">📄</div>
-        </button>
-        <button id="rotateButton4s" class="item right-top-mobile">
-          <div class="label">Lorem</div>
-          <div class="icon">📄</div>
-        </button>
-        <button id="rotateButton3s" class="item left-mid-mobile">
-          <div class="label">VAT</div>
-          <div class="icon">📄</div>
-        </button>
-        <button class="item right-mid-mobile">
-          <div class="label">Ipsum</div>
-          <div class="icon">📄</div>
-        </button>
-        <button id="rotateButtons" class="item left-bottom-mobile">
-          <div class="label">Accounts</div>
-          <div class="icon">📄</div>
-        </button>
-        <button class="item right-bottom-mobile">
-          <div class="label">Pnh</div>
-          <div class="icon">📄</div>
-        </button>
+    <div class="team-section">
+      <h1>Meet the team</h1>
+      <div class="team-members">
+        <div class="team-member">
+          <img src="person.png" alt="Team Member 1" />
+        </div>
+        <div class="team-member">
+          <img src="person2.png" alt="Team Member 2" />
+        </div>
+        <div class="team-member">
+          <img src="person3.png" alt="Team Member 3" />
+        </div>
+        <div class="team-member">
+          <img src="person4.png" alt="Team Member 4" />
+        </div>
       </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const leftTopButton = document.querySelector(".left-top");
-        const leftMidButton = document.querySelector(".left-mid");
-        const leftBottomButton = document.querySelector(".left-bottom");
-        const rightTopButton = document.querySelector(".right-top");
-        const rightMidButton = document.querySelector(".right-mid");
-        const rightBottomButton = document.querySelector(".right-bottom");
-        const cubeContainer = document.getElementById("cube-container");
-
-        function createConnectionLines() {
-          if (window.innerWidth >= 1025) {
-            function createStraightLine(button, isLeft) {
-              const line = document.createElement("div");
-              line.classList.add("connection-line");
-
-              const buttonRect = button.getBoundingClientRect();
-              const cubeRect = cubeContainer.getBoundingClientRect();
-
-              const startX = isLeft ? buttonRect.right : buttonRect.left;
-              const startY = buttonRect.top + buttonRect.height / 2;
-              const endX = cubeRect.left + cubeRect.width / 2;
-              const endY = cubeRect.top + cubeRect.height / 2;
-
-              const distance = Math.sqrt(
-                Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2)
-              );
-
-              const angle =
-                (Math.atan2(endY - startY, endX - startX) * 180) / Math.PI;
-
-              line.style.width = `${distance}px`;
-              line.style.height = "12px";
-              line.style.transformOrigin = "0 0";
-              line.style.transform = `rotate(${angle}deg)`;
-              line.style.left = `${startX}px`;
-              line.style.top = `${startY}px`;
-
-              document.body.appendChild(line);
-            }
-
-            function createCurvedLine(button, isTop, isLeft) {
-              const line = document.createElement("div");
-              line.classList.add("connection-line-curved");
-
-              const buttonRect = button.getBoundingClientRect();
-              const cubeRect = cubeContainer.getBoundingClientRect();
-
-              const startX = isLeft ? buttonRect.right : buttonRect.left;
-              const startY = buttonRect.top + buttonRect.height / 2;
-              const endX = cubeRect.left + cubeRect.width / 2;
-              const endY = cubeRect.top + cubeRect.height / 2;
-
-              const svg = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "svg"
-              );
-              svg.setAttribute("width", "100%");
-              svg.setAttribute("height", "100%");
-              svg.style.position = "absolute";
-              svg.style.left = "0";
-              svg.style.top = "0";
-              svg.style.pointerEvents = "none";
-
-              const path = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "path"
-              );
-
-              const multiplier = isTop ? -1 : 1;
-              const controlPointY = startY + ((endY - startY) / 2) * multiplier;
-
-              const pathData = `
-                M ${startX} ${startY}
-                Q ${(startX + endX) / 2} ${controlPointY} ${endX} ${endY}
-              `;
-
-              path.setAttribute("d", pathData);
-              path.setAttribute("fill", "none");
-              path.setAttribute("stroke", "white");
-              path.setAttribute("stroke-opacity", "0.5");
-              path.setAttribute("stroke-width", "12");
-
-              svg.appendChild(path);
-              document.body.appendChild(svg);
-            }
-
-            // Straight lines for middle buttons
-            createStraightLine(leftMidButton, true);
-            createStraightLine(rightMidButton, false);
-
-            // Curved lines for top and bottom buttons
-            createCurvedLine(leftTopButton, true, true);
-            createCurvedLine(leftBottomButton, true, true);
-            createCurvedLine(rightTopButton, true, false);
-            createCurvedLine(rightBottomButton, true, false);
-          }
-        }
-
-        // Initial connection lines
-        createConnectionLines();
-
-        // Recreate lines on window resize
-        window.addEventListener("resize", () => {
-          // Remove existing lines
-          document
-            .querySelectorAll(".connection-line, .connection-line-curved, svg")
-            .forEach((line) => line.remove());
-          createConnectionLines();
-        });
-      });
-    </script>
-    <script src="cube.js"></script>
   </body>
 </html>
