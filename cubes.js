@@ -2,12 +2,15 @@
 const scene = new THREE.Scene();
 
 // Create the camera
+let fov = window.innerWidth > 1000 ? 65 : 85;
+
 const camera = new THREE.PerspectiveCamera(
-  75,
+  fov,
   window.innerWidth / window.innerHeight,
   0.1,
   1000
 );
+
 camera.position.z = 5;
 
 // Create the renderer with a transparent background
@@ -79,22 +82,22 @@ loader.load(
     // Apply materials to all meshes
     model.traverse((child) => {
       if (child.isMesh) {
-        // If this is a typical GLTF export, the first mesh might be the base material
-        if (!originalMaterial && child.material) {
-          originalMaterial = child.material.clone();
-        }
+        // // If this is a typical GLTF export, the first mesh might be the base material
+        // if (!originalMaterial && child.material) {
+        //   originalMaterial = child.material.clone();
+        // }
 
-        // Create a material that matches the original cube face
-        const frontFaceMaterial = originalMaterial
-          ? originalMaterial.clone()
-          : new THREE.MeshStandardMaterial({
-              color: 0x800080, // Fallback purple
-            });
+        // // Create a material that matches the original cube face
+        // const frontFaceMaterial = originalMaterial
+        //   ? originalMaterial.clone()
+        //   : new THREE.MeshStandardMaterial({
+        //       color: 0x800080, // Fallback purple
+        //     });
 
-        // Apply the VAT texture to the front face material
-        frontFaceMaterial.map = vatTexture;
-        frontFaceMaterial.color.setHex(0xffffff); // Ensure purple color
-        frontFaceMaterial.needsUpdate = true;
+        // // Apply the VAT texture to the front face material
+        // frontFaceMaterial.map = vatTexture;
+        // frontFaceMaterial.color.setHex(0xffffff); // Ensure purple color
+        // frontFaceMaterial.needsUpdate = true;
 
         // Check if this is likely the front face
         // if (child.name === "Object_12") {

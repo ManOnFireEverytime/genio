@@ -2,8 +2,17 @@
 const scene = new THREE.Scene();
 
 // Create the camera
+// const camera = new THREE.PerspectiveCamera(
+//   55,
+//   window.innerWidth / window.innerHeight,
+//   0.1,
+//   1000
+// );
+
+let fov = window.innerWidth > 1000 ? 65 : 75;
+
 const camera = new THREE.PerspectiveCamera(
-  75,
+  fov,
   window.innerWidth / window.innerHeight,
   0.1,
   1000
@@ -71,7 +80,8 @@ loader.load(
     const vatTexture = createTextTexture("VAT");
     const taxTexture = createTextTexture("TAX");
     const accsTexture = createTextTexture("ACCS");
-    const accssTexture = createTextTexture("ACCsS");
+    const accssTexture = createTextTexture("IPSUM");
+    const pnhTexture = createTextTexture("PNH");
 
     // Capture the original material of a non-textured cube face
     let originalMaterial;
@@ -138,6 +148,25 @@ loader.load(
 
           child.material = accsFaceMaterial;
           console.log("Applied flipped ACCS texture to:", child.name);
+        } else if (child.name === "Object_14") {
+          // TAX texture for Object_8 with flipping
+          const accsFaceMaterial = originalMaterial
+            ? originalMaterial.clone()
+            : new THREE.MeshStandardMaterial({
+                color: 0x800080, // Fallback purple
+              });
+
+          const flippedTaxTexture = accssTexture.clone(); // Clone the texture to avoid global flipping
+          flippedTaxTexture.center.set(0.5, 0.5); // Set the center for proper flipping
+          // flippedTaxTexture.rotation = -Math.PI / 2; // Rotate the texture 180° to flip
+          flippedTaxTexture.needsUpdate = true;
+
+          accsFaceMaterial.map = flippedTaxTexture;
+          accsFaceMaterial.color.setHex(0xffffff);
+          accsFaceMaterial.needsUpdate = true;
+
+          child.material = accsFaceMaterial;
+          console.log("Applied flipped ACCS texture to:", child.name);
         } else if (child.name === "Object_4") {
           // Create a new canvas specifically for the logo
           const logoCanvas = document.createElement("canvas");
@@ -180,46 +209,62 @@ loader.load(
           // Set the logo image source (adjust the path as needed)
           logoImage.src = "logo.png";
         } else if (child.name === "Object_6") {
-          // Create a new canvas specifically for the logo
-          const logoCanvas = document.createElement("canvas");
-          logoCanvas.width = 512; // Size of the logo canvas
-          logoCanvas.height = 512; // Size of the logo canvas
-          const logoContext = logoCanvas.getContext("2d");
+          const accsFaceMaterial = originalMaterial
+            ? originalMaterial.clone()
+            : new THREE.MeshStandardMaterial({
+                color: 0x800080, // Fallback purple
+              });
 
-          // Fill the canvas with vibrant purple color (for the background)
-          logoContext.fillStyle = "rgb(132, 2, 132)"; // Vibrant purple color (brighter)
-          logoContext.fillRect(0, 0, logoCanvas.width, logoCanvas.height); // Apply the purple color
+          const flippedTaxTexture = pnhTexture.clone(); // Clone the texture to avoid global flipping
+          flippedTaxTexture.center.set(0.5, 0.5); // Set the center for proper flipping
+          flippedTaxTexture.rotation = Math.PI; // Rotate the texture 180° to flip
+          flippedTaxTexture.needsUpdate = true;
 
-          // Load and draw the logo image
-          const logoImage = new Image();
-          logoImage.onload = () => {
-            // Draw the logo on the canvas, scaling it down to fit
-            logoContext.drawImage(
-              logoImage,
-              logoCanvas.width / 4,
-              logoCanvas.height / 4,
-              logoCanvas.width / 2,
-              logoCanvas.height / 2
-            );
+          accsFaceMaterial.map = flippedTaxTexture;
+          accsFaceMaterial.color.setHex(0xffffff);
+          accsFaceMaterial.needsUpdate = true;
 
-            // Create texture from the canvas
-            const logoTexture = new THREE.CanvasTexture(logoCanvas);
-            logoTexture.needsUpdate = true;
+          child.material = accsFaceMaterial;
+          // // Create a new canvas specifically for the logo
+          // const logoCanvas = document.createElement("canvas");
+          // logoCanvas.width = 512; // Size of the logo canvas
+          // logoCanvas.height = 512; // Size of the logo canvas
+          // const logoContext = logoCanvas.getContext("2d");
 
-            // Apply the logo texture to the material
-            const logoMaterial = new THREE.MeshStandardMaterial({
-              color: 0xffffff, // Set the material color to white
-              map: logoTexture, // Apply the logo texture
-              side: THREE.DoubleSide, // Make sure the texture appears on both sides
-            });
+          // // Fill the canvas with vibrant purple color (for the background)
+          // logoContext.fillStyle = "rgb(132, 2, 132)"; // Vibrant purple color (brighter)
+          // logoContext.fillRect(0, 0, logoCanvas.width, logoCanvas.height); // Apply the purple color
 
-            // Apply the logo material to all sub-faces of Object_6
-            child.material = logoMaterial;
-            console.log("Applied logo texture to all faces of:", child.name);
-          };
+          // // Load and draw the logo image
+          // const logoImage = new Image();
+          // logoImage.onload = () => {
+          //   // Draw the logo on the canvas, scaling it down to fit
+          //   logoContext.drawImage(
+          //     logoImage,
+          //     logoCanvas.width / 4,
+          //     logoCanvas.height / 4,
+          //     logoCanvas.width / 2,
+          //     logoCanvas.height / 2
+          //   );
 
-          // Set the logo image source (adjust the path as needed)
-          logoImage.src = "logo2.png";
+          //   // Create texture from the canvas
+          //   const logoTexture = new THREE.CanvasTexture(logoCanvas);
+          //   logoTexture.needsUpdate = true;
+
+          //   // Apply the logo texture to the material
+          //   const logoMaterial = new THREE.MeshStandardMaterial({
+          //     color: 0xffffff, // Set the material color to white
+          //     map: logoTexture, // Apply the logo texture
+          //     side: THREE.DoubleSide, // Make sure the texture appears on both sides
+          //   });
+
+          //   // Apply the logo material to all sub-faces of Object_6
+          //   child.material = logoMaterial;
+          //   console.log("Applied logo texture to all faces of:", child.name);
+          // };
+
+          // // Set the logo image source (adjust the path as needed)
+          // logoImage.src = "logo2.png";
         } else if (child.material) {
           // Ensure other faces remain purple
           child.material.color.setHex(0x800080);
@@ -599,6 +644,151 @@ document.getElementById("rotateButton4s").addEventListener("click", () => {
     // Create a smooth rotation to the front face
     const startRotation = model.rotation.clone();
     const targetRotation = new THREE.Euler(-Math.PI / 2, 0, 0);
+
+    function smoothRotate(progress) {
+      model.rotation.x = THREE.MathUtils.lerp(
+        startRotation.x,
+        targetRotation.x,
+        progress
+      );
+      model.rotation.y = THREE.MathUtils.lerp(
+        startRotation.y,
+        targetRotation.y,
+        progress
+      );
+      model.rotation.z = THREE.MathUtils.lerp(
+        startRotation.z,
+        targetRotation.z,
+        progress
+      );
+
+      renderer.render(scene, camera);
+
+      if (progress < 1) {
+        requestAnimationFrame(() => smoothRotate(progress + 0.05));
+      }
+    }
+
+    smoothRotate(0);
+  }
+});
+document.getElementById("rotateButton5").addEventListener("click", () => {
+  if (model) {
+    // Stop continuous rotation
+    isRotating = false;
+
+    // Create a smooth rotation to the front face
+    const startRotation = model.rotation.clone();
+    const targetRotation = new THREE.Euler(Math.PI / 2, 0, 0);
+
+    function smoothRotate(progress) {
+      model.rotation.x = THREE.MathUtils.lerp(
+        startRotation.x,
+        targetRotation.x,
+        progress
+      );
+      model.rotation.y = THREE.MathUtils.lerp(
+        startRotation.y,
+        targetRotation.y,
+        progress
+      );
+      model.rotation.z = THREE.MathUtils.lerp(
+        startRotation.z,
+        targetRotation.z,
+        progress
+      );
+
+      renderer.render(scene, camera);
+
+      if (progress < 1) {
+        requestAnimationFrame(() => smoothRotate(progress + 0.05));
+      }
+    }
+
+    smoothRotate(0);
+  }
+});
+document.getElementById("rotateButton5s").addEventListener("click", () => {
+  if (model) {
+    // Stop continuous rotation
+    isRotating = false;
+
+    // Create a smooth rotation to the front face
+    const startRotation = model.rotation.clone();
+    const targetRotation = new THREE.Euler(Math.PI / 2, 0, 0);
+
+    function smoothRotate(progress) {
+      model.rotation.x = THREE.MathUtils.lerp(
+        startRotation.x,
+        targetRotation.x,
+        progress
+      );
+      model.rotation.y = THREE.MathUtils.lerp(
+        startRotation.y,
+        targetRotation.y,
+        progress
+      );
+      model.rotation.z = THREE.MathUtils.lerp(
+        startRotation.z,
+        targetRotation.z,
+        progress
+      );
+
+      renderer.render(scene, camera);
+
+      if (progress < 1) {
+        requestAnimationFrame(() => smoothRotate(progress + 0.05));
+      }
+    }
+
+    smoothRotate(0);
+  }
+});
+
+document.getElementById("rotateButton6").addEventListener("click", () => {
+  if (model) {
+    // Stop continuous rotation
+    isRotating = false;
+
+    // Create a smooth rotation to the front face
+    const startRotation = model.rotation.clone();
+    const targetRotation = new THREE.Euler(0, Math.PI / 1, 0);
+
+    function smoothRotate(progress) {
+      model.rotation.x = THREE.MathUtils.lerp(
+        startRotation.x,
+        targetRotation.x,
+        progress
+      );
+      model.rotation.y = THREE.MathUtils.lerp(
+        startRotation.y,
+        targetRotation.y,
+        progress
+      );
+      model.rotation.z = THREE.MathUtils.lerp(
+        startRotation.z,
+        targetRotation.z,
+        progress
+      );
+
+      renderer.render(scene, camera);
+
+      if (progress < 1) {
+        requestAnimationFrame(() => smoothRotate(progress + 0.05));
+      }
+    }
+
+    smoothRotate(0);
+  }
+});
+document.getElementById("rotateButton6s").addEventListener("click", () => {
+  if (model) {
+    // Stop continuous rotation
+    isRotating = false;
+
+    // Create a smooth rotation to the front face
+    const startRotation = model.rotation.clone();
+    const targetRotation = new THREE.Euler(0, Math.PI / 1, 0);
 
     function smoothRotate(progress) {
       model.rotation.x = THREE.MathUtils.lerp(

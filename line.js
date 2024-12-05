@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         line.style.transform = `rotate(${angle}deg)`;
         line.style.position = "absolute";
         line.style.left = `${startX}px`;
+        line.style.opacity = "0.2";
 
         // Adjust only the `top` style for the left line
         line.style.top = isLeft ? `${startY - 32}px` : `${startY}px`;
@@ -93,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         path.setAttribute("d", pathData);
         path.setAttribute("fill", "none");
         path.setAttribute("stroke", "white");
-        path.setAttribute("stroke-opacity", "0.5");
+        path.setAttribute("stroke-opacity", "0.2");
         path.setAttribute("stroke-width", "32");
 
         svg.appendChild(path);

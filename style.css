@@ -106,7 +106,7 @@ h6 {
 	height: 280px;
 	object-fit: cover;
 	border-radius: 25px;
-	padding: 2px;
+	padding: 1px;
 	/* Space for the border */
 	background: linear-gradient(180deg, #ffffff 0%, #f49ecc 28%);
 	-webkit-mask-image: linear-gradient(black,
@@ -650,34 +650,47 @@ h6 {
 	margin-top: 10px;
 }
 
-/* Newsletter Form */
 .newsletter-form {
 	display: flex;
-	gap: 5px;
+	position: relative;
+	width: 100%;
 }
 
 .newsletter-form input {
 	flex: 1;
-	padding: 10px;
+	padding: 10px 40px 10px 15px;
+	/* Add right padding to make space for the button */
 	border: 1px solid pink;
 	border-radius: 50px;
 	background-color: #1c1c1c;
 	color: #fff;
 }
 
-.newsletter-form button {
-	padding: 10px 15px;
+.newsletter-form .newsletter-button {
+	position: absolute;
+	top: 35%;
+	right: 15px;
+	/* Adjust spacing from the right edge */
+	transform: translateY(-50%);
+	background: none;
 	border: none;
-	border-radius: 5px;
-	background-color: #f49ecc;
-	color: #1c1c1c;
-	font-weight: bold;
+	color: #fff;
+	font-size: 1rem;
 	cursor: pointer;
+	outline: none;
 }
 
-.newsletter-form button:hover {
-	background-color: #ff77bb;
+.newsletter-form .newsletter-button:hover {
+	background: radial-gradient(circle, #962D72 0%, rgba(25, 25, 25, 0) 100%);
+
+	-webkit-background-clip: text;
+	color: transparent;
+	/* Add a hover effect for the button */
 }
+
+
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -700,6 +713,12 @@ h6 {
 
 	.bordered-group {
 		flex-direction: column;
+		width: 85%;
+	}
+
+	.newsletter-form {
+		width: 85%;
+		margin: auto;
 	}
 
 	.footer-logos {
@@ -726,22 +745,74 @@ h6 {
 		font-size: 0.8rem;
 	}
 
-	.newsletter-form button {
-		font-size: 0.8rem;
-	}
 }
 
 .bordered-group {
 	display: flex;
 	background: linear-gradient(180deg, #1c1c1c 0%, #191919 100%);
-	border: 1px solid pink;
-
 	border-radius: 50px;
+	position: relative;
+	/* To position the pseudo-element */
+	padding: 10px;
+	/* Ensure content inside has some space */
+	z-index: 1;
+	/* Place the content above the pseudo-element */
 }
+
+.bordered-group::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 50px;
+	/* Same border radius as the parent */
+	padding: 1px;
+	/* Thickness of the gradient border */
+	background: linear-gradient(180deg, #96227a 0%, #ab5b9a 46%, #c092ab 100%);
+	-webkit-mask:
+		linear-gradient(#fff 0 0) content-box,
+		linear-gradient(#fff 0 0);
+	mask:
+		linear-gradient(#fff 0 0) content-box,
+		linear-gradient(#fff 0 0);
+	-webkit-mask-composite: destination-out;
+	mask-composite: exclude;
+	z-index: -1;
+	/* Place it behind the content */
+}
+
+
 
 .bordered-group .footer-column {
 	flex: 1;
 }
+
+@media (min-width: 1024px) {
+	.footer-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+	}
+
+	.bordered-group {
+		flex: 0 0 50%;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.footer-column {
+		padding: 20px;
+	}
+
+	.footer-column:not(.bordered-group .footer-column) {
+		flex: 1 1 25%;
+		/* Ensure the other columns take up 50% width collectively */
+		min-width: 200px;
+	}
+}
+
 
 .my-form a {
 	color: inherit;
@@ -875,17 +946,17 @@ h6 {
 .my-form .btn-grid {
 	position: relative;
 	overflow: hidden;
-	transition: filter 0.2s;
+
 }
 
 .my-form button {
 	font-weight: bold;
 }
 
-.my-form button>* {
+/* .my-form button>* {
 	display: inline-block;
 	width: 100%;
-	transition: transform 0.4s ease-in-out;
+
 }
 
 .my-form button .back {
@@ -903,7 +974,7 @@ h6 {
 .my-form button:enabled:hover .front,
 .my-form button:focus .front {
 	transform: translateX(110%);
-}
+} */
 
 /* CUSTOM CHECKBOX
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -1897,9 +1968,28 @@ iframe {
 	box-sizing: border-box;
 }
 
+.cubes-container .item::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: transparent;
+	/* Default background */
+	z-index: -1;
+	/* Place it behind the actual content */
+	transition: background 0.3s ease;
+	/* Smooth transition */
+}
+
 .cubes-container .item:hover {
 	background-color: rgba(255, 255, 255, 0.2);
 	transform: scale(1.05);
+}
+
+.cubes-container .item:hover::before {
+	background: radial-gradient(circle, #962D72 0%, rgba(25, 25, 25, 0) 100%);
 }
 
 .cubes-container .icon {
@@ -1986,7 +2076,7 @@ iframe {
 		position: absolute;
 		width: 450px;
 		height: 450px;
-		background-color: rgba(255, 255, 255, 0.2);
+		background-color: rgba(255, 255, 255, 0.1);
 		border: 2px solid rgba(150, 34, 122, 0.5);
 		border-radius: 50%;
 		top: 50%;
