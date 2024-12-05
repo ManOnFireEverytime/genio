@@ -668,7 +668,7 @@ h6 {
 
 .newsletter-form .newsletter-button {
 	position: absolute;
-	top: 35%;
+	top: 50%;
 	right: 15px;
 	/* Adjust spacing from the right edge */
 	transform: translateY(-50%);
@@ -909,11 +909,11 @@ h6 {
 	background: var(--bgFormElsFocus);
 }
 
-.my-form select:focus,
+/* .my-form select:focus,
 .my-form input:focus,
 .my-form textarea:focus {
 	transform: scale(1);
-}
+} */
 
 .my-form *:required,
 .my-form select {
@@ -2335,18 +2335,6 @@ iframe {
 	border: 1px solid #e4e4e4;
 }
 
-input {
-	height: 42px;
-	padding: 0 1rem;
-	background: #fff;
-	border-radius: 30px;
-	margin-bottom: 1rem;
-	-webkit-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
-	border: 0;
-}
 
 #contact_form textarea {
 	resize: none;
