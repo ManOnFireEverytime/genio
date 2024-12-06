@@ -328,39 +328,6 @@
 
     <footer class="footer">
       <div class="footer-container">
-        <!-- Contact Us, Hampshire, and Wartling Combined -->
-        <!-- <div class="footer-column bordered">
-          <h3>Contact us</h3>
-          <p>
-            <strong>Main Office</strong><br />33a Portsmouth Rd<br />Woolston<br />Southampton<br />SO19
-            9BA
-          </p>
-          <p>
-            Tel: 02382 123 336<br />Email:
-            <a href="mailto:hello@genio-accountants.co.uk"
-              >hello@genio-accountants.co.uk</a
-            >
-          </p>
-        </div>
-
-        <div class="footer-column bordered">
-          <h3>Hampshire</h3>
-          <p>
-            <strong>Satellite Office</strong><br />The Old Bond Store<br />Back
-            of the Walls<br />Hampshire<br />Southampton<br />SO14 3BH
-          </p>
-          <p>Tel: 03452 222 1066 / 02382 123 336</p>
-        </div>
-
-        <div class="footer-column bordered">
-          <h3>Wartling</h3>
-          <p>
-            <strong>Satellite Office</strong><br />Well House<br />Wartling
-            Road<br />Wartling<br />Eastbourne<br />BN27 7XL
-          </p>
-          <p>Tel: 03452 222 1066 / 02382 123 336</p>
-        </div> -->
-
         <div class="bordered-group">
           <div class="footer-column">
             <h3>Contact us</h3>
@@ -505,13 +472,16 @@
           navbar = $(".navbar");
 
         if (bodyScroll > 50) {
-          $(".navbar-logo img").attr("src", "images/logo-black.png");
+          // Hide the logo on scroll
+          $(".navbar-brand img").hide();
           navbar.addClass("nav-scroll");
         } else {
-          $(".navbar-logo img").attr("src", "images/logo.png");
+          // Show the logo when at the top of the page
+          $(".navbar-brand img").show();
           navbar.removeClass("nav-scroll");
         }
       });
+
       $(window).on("load", function () {
         var bodyScroll = $(window).scrollTop(),
           navbar = $(".navbar");
