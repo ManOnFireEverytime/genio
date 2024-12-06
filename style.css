@@ -2000,6 +2000,19 @@ iframe {
 	z-index: 10 !important;
 }
 
+.cubes-container .connection-line {
+	position: absolute;
+	background: white;
+	opacity: 0.5;
+	z-index: 1;
+}
+
+.cubes-container .connection-line-curved {
+	/* position: absolute; */
+	background: white;
+	opacity: 200;
+	z-index: 2;
+}
 
 @media (min-width: 1025px) {
 	.cubes-container {
